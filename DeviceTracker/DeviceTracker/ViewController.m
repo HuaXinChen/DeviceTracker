@@ -9,6 +9,10 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *scannerView;
+
+@property (weak, nonatomic) IBOutlet UILabel *displayLable;
+
 
 @end
 
@@ -23,5 +27,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)scanPressed:(UIButton *)sender {
+    _displayLable.text = @"test scan pressed";
+}
+
+- (IBAction)statusPressed:(UIButton *)sender {
+    _displayLable.text = @"test status pressed";
+}
+
 
 @end
