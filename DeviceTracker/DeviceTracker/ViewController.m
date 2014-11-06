@@ -30,11 +30,19 @@
     // Initially make the captureSession object nil.
     _captureSession = nil;
     
-    // Set the initial value of the flag to NO.
     _isReading = NO;
     
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
+    
+    //[self startReading];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self startReading];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,24 +55,7 @@
 #pragma mark - IBAction method implementation
 
 - (IBAction)scanPressed:(id)sender {
-    if (!_isReading) {
-        // This is the case where the app should read a QR code when the start button is tapped.
-        if ([self startReading]) {
-            // If the startReading methods returns YES and the capture session is successfully
-            // running, then change the start button title and the status message.
-            [_btnScan setTitle:@"Stop" forState:UIControlStateNormal];
-            [_lblStatus setText:@"Scanning for QR Code..."];
-        }
-    }
-    else{
-        // In this case the app is currently reading a QR code and it should stop doing so.
-        [self stopReading];
-        // The bar button item's title should change again.
-        [_btnScan setTitle:@"Scan" forState:UIControlStateNormal];
-    }
-    
-    // Set to the flag the exact opposite value of the one that currently has.
-    _isReading = !_isReading;
+    _lblStatus.text = @"test scan pressed";
 }
 
 - (IBAction)statusPressed:(UIButton *)sender {
@@ -109,7 +100,7 @@
     // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
     _videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
     [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [_videoPreviewLayer setFrame:_viewPreview.layer.bounds];
+    [_videoPreviewLayer setFrame:self.viewPreview.bounds];
     [_viewPreview.layer addSublayer:_videoPreviewLayer];
     
     
@@ -164,8 +155,8 @@
             // Everything is done on the main thread.
             [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
             
-            [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
-            [_btnScan performSelectorOnMainThread:@selector(setTitle:) withObject:@"Start!" waitUntilDone:NO];
+            //[self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+            //[_btnScan performSelectorOnMainThread:@selector(setTitle:) withObject:@"Start!" waitUntilDone:NO];
             
             _isReading = NO;
             
