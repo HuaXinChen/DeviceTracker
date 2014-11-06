@@ -13,7 +13,7 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic) BOOL isReading;
-@property (nonatomic) NSString* deviceID;
+@property (nonatomic, strong) NSMutableString* deviceID;
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -33,6 +33,8 @@
     
     _isReading = NO;
     
+    _deviceID = [[NSMutableString alloc] initWithString:@""];
+    
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
     
@@ -42,7 +44,6 @@
     
     NSString *docsDir;
     NSArray *dirPaths;
-    sqlite3_stmt    *statement;
     
     // Get the documents directory
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -104,16 +105,18 @@
 
 - (IBAction)verifyPressed:(id)sender {
     
-    //_lblOutput.text = _deviceID;
     
     const char *dbpath = [_databasePath UTF8String];
-    sqlite3_stmt    *statement;
+    sqlite3_stmt *statement;
     
     if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
                               @"SELECT deviceid, name, made FROM devices WHERE deviceid=\"%@\"",
+                              //@"SELECT deviceid, name, made FROM devices"];
                               _deviceID];
+        
+        
         
         const char *query_stmt = [querySQL UTF8String];
         
@@ -130,10 +133,12 @@
                                        initWithUTF8String:(const char *)
                                        sqlite3_column_text(statement, 2)];
                 
-                NSString* nameAndMade;
+                //allocate memory for object
+                NSString* nameAndMade = [[NSString alloc] init];
                 nameAndMade = [nameAndMade stringByAppendingString:nameField];
                 nameAndMade = [nameAndMade stringByAppendingString:madeField];
-                _lblOutput.text = nameAndMade;
+                _lblOutput.text = [NSString stringWithFormat:
+                                   @"%@",nameAndMade];
                 
             } else {
                 _lblOutput.text = @"Device not found";
@@ -151,40 +156,20 @@
     if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
     {
         
-        //1
-        NSString *insertSQL1 = [NSString stringWithFormat:
-                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
-                                @"PNI-QA-MTD-001", @"GALAXY S5", @"SAMSUNG"];
-        const char *insert_stmt1 = [insertSQL1 UTF8String];
+        //insert into tablename ( col1, col2, col3) values
+        // (val1, val2, val3),
+        // (val1, val2, val3),
+        // (val1, val2, val3);
+        NSString *combinedSQL = [NSString stringWithFormat:
+                                 @"INSERT INTO DEVICES ( DEVICEID , NAME , MADE) VALUES "
+                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\" ),"
+                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\" ),"
+                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\" ),"
+                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\" )"
+                                 ";"];
+        
+        const char *insert_stmt1 = [combinedSQL UTF8String];
         sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt1, -1, &statement, NULL);
-        
-        //#2
-        NSString *insertSQL2 = [NSString stringWithFormat:
-                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
-                                @"PNI-QA-MTD-003", @"GALAXY S6", @"SAMSUNG"];
-        const char *insert_stmt2 = [insertSQL2 UTF8String];
-        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt2, -1, &statement, NULL);
-        
-        //#3
-        NSString *insertSQL3 = [NSString stringWithFormat:
-                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
-                                @"PNI-QA-MTD-005", @"GALAXY S7", @"SAMSUNG"];
-        const char *insert_stmt3 = [insertSQL3 UTF8String];
-        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt3, -1, &statement, NULL);
-        
-        //#4
-        NSString *insertSQL4 = [NSString stringWithFormat:
-                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
-                                @"PNI-QA-MTD-007", @"GALAXY S8", @"SAMSUNG"];
-        const char *insert_stmt4 = [insertSQL4 UTF8String];
-        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt4, -1, &statement, NULL);
-        
-        //#5
-        NSString *insertSQL5 = [NSString stringWithFormat:
-                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
-                                @"PNI-QA-MTD-009", @"GALAXY S9", @"SAMSUNG"];
-        const char *insert_stmt5 = [insertSQL5 UTF8String];
-        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt5, -1, &statement, NULL);
         
         
         if (sqlite3_step(statement) == SQLITE_DONE)
@@ -299,13 +284,13 @@
             //[self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
             //[_btnScan performSelectorOnMainThread:@selector(setTitle:) withObject:@"Start!" waitUntilDone:NO];
             
-            _isReading = NO;
-            
             // If the audio player is not nil, then play the sound effect.
             if (_audioPlayer) {
                 [_audioPlayer play];
-                _deviceID = _lblStatus.text;
             }
+            
+            //make a copy of the device id when QR reading is successful
+            [_deviceID setString: _lblStatus.text];
         }
     }
     
