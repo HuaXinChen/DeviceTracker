@@ -13,6 +13,7 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic) BOOL isReading;
+@property (nonatomic) NSString* deviceID;
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -35,7 +36,49 @@
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
     
-    //[self startReading];
+    
+    //initialize db
+    // Do any additional setup after loading the view, typically from a nib.
+    
+    NSString *docsDir;
+    NSArray *dirPaths;
+    sqlite3_stmt    *statement;
+    
+    // Get the documents directory
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    docsDir = dirPaths[0];
+    
+    // Build the path to the database file
+    _databasePath = [[NSString alloc]
+                     initWithString: [docsDir stringByAppendingPathComponent:
+                                      @"deviceTracker.db"]];
+    
+    //Connect to database
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+    {
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            //set schema if DEVICES table is not availabe
+            const char *sql_stmt =
+            "CREATE TABLE IF NOT EXISTS DEVICES (ID INTEGER PRIMARY KEY AUTOINCREMENT, DEVICEID TEXT, NAME TEXT, MADE TEXT)";
+            
+            //error message in case of database failure
+            if (sqlite3_exec(_deviceTrackerDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
+            {
+                _lblStatus.text = @"Failed to create table";
+            }
+            
+            sqlite3_close(_deviceTrackerDB);
+            
+        } else {
+            _lblStatus.text = @"Failed to open/create database";
+        }
+    }
+
     
 }
 
@@ -54,13 +97,111 @@
 
 #pragma mark - IBAction method implementation
 
+
 - (IBAction)scanPressed:(id)sender {
     _lblStatus.text = @"test scan pressed";
 }
 
-- (IBAction)statusPressed:(UIButton *)sender {
+- (IBAction)verifyPressed:(id)sender {
+    
+    //_lblOutput.text = _deviceID;
+    
+    const char *dbpath = [_databasePath UTF8String];
+    sqlite3_stmt    *statement;
+    
+    if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT deviceid, name, made FROM devices WHERE deviceid=\"%@\"",
+                              _deviceID];
+        
+        const char *query_stmt = [querySQL UTF8String];
+        
+        if (sqlite3_prepare_v2(_deviceTrackerDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *nameField = [[NSString alloc]
+                                       initWithUTF8String:(const char *)
+                                       sqlite3_column_text(statement, 1)];
+                
+                NSString *madeField = [[NSString alloc]
+                                       initWithUTF8String:(const char *)
+                                       sqlite3_column_text(statement, 2)];
+                
+                NSString* nameAndMade;
+                nameAndMade = [nameAndMade stringByAppendingString:nameField];
+                nameAndMade = [nameAndMade stringByAppendingString:madeField];
+                _lblOutput.text = nameAndMade;
+                
+            } else {
+                _lblOutput.text = @"Device not found";
+            }
+            sqlite3_finalize(statement);
+        }
+        sqlite3_close(_deviceTrackerDB);
+    }
+}
+
+- (IBAction)insertPressed:(id)sender {
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+    {
+        
+        //1
+        NSString *insertSQL1 = [NSString stringWithFormat:
+                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
+                                @"PNI-QA-MTD-001", @"GALAXY S5", @"SAMSUNG"];
+        const char *insert_stmt1 = [insertSQL1 UTF8String];
+        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt1, -1, &statement, NULL);
+        
+        //#2
+        NSString *insertSQL2 = [NSString stringWithFormat:
+                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
+                                @"PNI-QA-MTD-003", @"GALAXY S6", @"SAMSUNG"];
+        const char *insert_stmt2 = [insertSQL2 UTF8String];
+        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt2, -1, &statement, NULL);
+        
+        //#3
+        NSString *insertSQL3 = [NSString stringWithFormat:
+                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
+                                @"PNI-QA-MTD-005", @"GALAXY S7", @"SAMSUNG"];
+        const char *insert_stmt3 = [insertSQL3 UTF8String];
+        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt3, -1, &statement, NULL);
+        
+        //#4
+        NSString *insertSQL4 = [NSString stringWithFormat:
+                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
+                                @"PNI-QA-MTD-007", @"GALAXY S8", @"SAMSUNG"];
+        const char *insert_stmt4 = [insertSQL4 UTF8String];
+        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt4, -1, &statement, NULL);
+        
+        //#5
+        NSString *insertSQL5 = [NSString stringWithFormat:
+                                @"INSERT INTO DEVICES (DEVICEID, NAME, MADE) VALUES (\"%@\", \"%@\", \"%@\")",
+                                @"PNI-QA-MTD-009", @"GALAXY S9", @"SAMSUNG"];
+        const char *insert_stmt5 = [insertSQL5 UTF8String];
+        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt5, -1, &statement, NULL);
+        
+        
+        if (sqlite3_step(statement) == SQLITE_DONE)
+        {
+            _lblOutput.text = @"Data added";
+        } else {
+            _lblOutput.text = @"Failed to add data";
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_deviceTrackerDB);
+    }
+}
+
+- (IBAction)statusPressed:(id)sender {
     _lblStatus.text = @"test status pressed";
 }
+
 
 
 #pragma mark - Private method implementation
@@ -163,6 +304,7 @@
             // If the audio player is not nil, then play the sound effect.
             if (_audioPlayer) {
                 [_audioPlayer play];
+                _deviceID = _lblStatus.text;
             }
         }
     }

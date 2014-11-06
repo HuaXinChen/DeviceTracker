@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
+		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
 		574993FE1A00AE8600F79F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 574993FD1A00AE8600F79F9F /* main.m */; };
 		574994011A00AE8600F79F9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994001A00AE8600F79F9F /* AppDelegate.m */; };
 		574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 574994021A00AE8600F79F9F /* DeviceTracker.xcdatamodeld */; };
 		574994071A00AE8600F79F9F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994061A00AE8600F79F9F /* ViewController.m */; };
-		5749940A1A00AE8600F79F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 574994081A00AE8600F79F9F /* Main.storyboard */; };
 		5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5749940B1A00AE8600F79F9F /* Images.xcassets */; };
 		5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5749940D1A00AE8600F79F9F /* LaunchScreen.xib */; };
 		5749941B1A00AE8600F79F9F /* DeviceTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		574993F81A00AE8600F79F9F /* DeviceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574993FC1A00AE8600F79F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		574993FD1A00AE8600F79F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -39,7 +42,6 @@
 		574994031A00AE8600F79F9F /* DeviceTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeviceTracker.xcdatamodel; sourceTree = "<group>"; };
 		574994051A00AE8600F79F9F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		574994061A00AE8600F79F9F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		574994091A00AE8600F79F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5749940B1A00AE8600F79F9F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5749940E1A00AE8600F79F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		574994141A00AE8600F79F9F /* DeviceTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeviceTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 		574993EF1A00AE8600F79F9F = {
 			isa = PBXGroup;
 			children = (
+				43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */,
 				574993FA1A00AE8600F79F9F /* DeviceTracker */,
 				574994171A00AE8600F79F9F /* DeviceTrackerTests */,
 				574993F91A00AE8600F79F9F /* Products */,
@@ -96,10 +100,10 @@
 				574994001A00AE8600F79F9F /* AppDelegate.m */,
 				574994051A00AE8600F79F9F /* ViewController.h */,
 				574994061A00AE8600F79F9F /* ViewController.m */,
-				574994081A00AE8600F79F9F /* Main.storyboard */,
+				436A81F11A0A018B009A04B6 /* Main.storyboard */,
 				5749940B1A00AE8600F79F9F /* Images.xcassets */,
-				5749940D1A00AE8600F79F9F /* LaunchScreen.xib */,
 				574994021A00AE8600F79F9F /* DeviceTracker.xcdatamodeld */,
+				5749940D1A00AE8600F79F9F /* LaunchScreen.xib */,
 				5778076F1A072C6E00D5FA02 /* beep.mp3 */,
 				574993FB1A00AE8600F79F9F /* Supporting Files */,
 			);
@@ -224,10 +228,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5749940A1A00AE8600F79F9F /* Main.storyboard in Resources */,
 				5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */,
 				577807701A072C6E00D5FA02 /* beep.mp3 in Resources */,
 				5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */,
+				436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +277,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		574994081A00AE8600F79F9F /* Main.storyboard */ = {
+		436A81F11A0A018B009A04B6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				574994091A00AE8600F79F9F /* Base */,
+				436A81F21A0A018B009A04B6 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -309,7 +313,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: huaxin chen (JXNT4798E6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -330,7 +334,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos8.0;
 				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
@@ -352,7 +356,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: huaxin chen (JXNT4798E6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -367,7 +371,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos8.0;
 				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
