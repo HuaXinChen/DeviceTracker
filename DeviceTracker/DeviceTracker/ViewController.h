@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
 #import <AVFoundation/AVFoundation.h>
+#import "dbManager.h"
 
 @interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
 
@@ -27,7 +28,7 @@
 
 
 //create db
-@property (strong, nonatomic) NSString *databasePath;
-@property (nonatomic) sqlite3 *deviceTrackerDB;
+//@property (strong, nonatomic) NSString *databasePath;
+//@property (nonatomic) sqlite3 *deviceTrackerDB;
 @end
 

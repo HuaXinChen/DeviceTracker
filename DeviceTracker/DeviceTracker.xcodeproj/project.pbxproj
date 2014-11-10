@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4317B7F31A0DF9EE00746295 /* dbManager.m */; };
 		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
 		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
 		574993FE1A00AE8600F79F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 574993FD1A00AE8600F79F9F /* main.m */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4317B7F21A0DF9AD00746295 /* dbManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dbManager.h; sourceTree = "<group>"; };
+		4317B7F31A0DF9EE00746295 /* dbManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dbManager.m; sourceTree = "<group>"; };
 		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		574993F81A00AE8600F79F9F /* DeviceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +146,8 @@
 				574994261A00AF1C00F79F9F /* Device.m */,
 				5749942A1A00AF3E00F79F9F /* User.h */,
 				574994281A00AF2D00F79F9F /* User.m */,
+				4317B7F21A0DF9AD00746295 /* dbManager.h */,
+				4317B7F31A0DF9EE00746295 /* dbManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				574994291A00AF2D00F79F9F /* User.m in Sources */,
 				574994071A00AE8600F79F9F /* ViewController.m in Sources */,
 				574994271A00AF1C00F79F9F /* Device.m in Sources */,
+				4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */,
 				574993FE1A00AE8600F79F9F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
