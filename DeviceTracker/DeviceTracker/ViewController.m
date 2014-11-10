@@ -13,6 +13,7 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic) BOOL isReading;
+@property (nonatomic) BOOL isReturned;
 @property (nonatomic, strong) NSMutableString* deviceID;
 
 -(BOOL)startReading;
@@ -32,6 +33,7 @@
     _captureSession = nil;
     
     _isReading = NO;
+    _isReturned = YES;
     
     _deviceID = [[NSMutableString alloc] initWithString:@""];
     
@@ -65,7 +67,7 @@
             char *errMsg;
             //set schema if DEVICES table is not availabe
             const char *sql_stmt =
-            "CREATE TABLE IF NOT EXISTS DEVICES (ID INTEGER PRIMARY KEY AUTOINCREMENT, DEVICEID TEXT, NAME TEXT, MADE TEXT)";
+            "CREATE TABLE IF NOT EXISTS DEVICES (ID INTEGER PRIMARY KEY AUTOINCREMENT, DEVICEID TEXT, NAME TEXT, MADE TEXT, RETURNED INTEGER)";
             
             //error message in case of database failure
             if (sqlite3_exec(_deviceTrackerDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
@@ -79,7 +81,7 @@
             _lblStatus.text = @"Failed to open/create database";
         }
     }
-
+    
     
 }
 
@@ -105,6 +107,7 @@
 
 - (IBAction)verifyPressed:(id)sender {
     
+    BOOL validDevicesScanned = NO;
     
     const char *dbpath = [_databasePath UTF8String];
     sqlite3_stmt *statement;
@@ -112,7 +115,7 @@
     if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
-                              @"SELECT deviceid, name, made FROM devices WHERE deviceid=\"%@\"",
+                              @"SELECT deviceid, name, made, returned FROM devices WHERE deviceid=\"%@\"",
                               //@"SELECT deviceid, name, made FROM devices"];
                               _deviceID];
         
@@ -133,12 +136,15 @@
                                        initWithUTF8String:(const char *)
                                        sqlite3_column_text(statement, 2)];
                 
+                _isReturned = (BOOL)sqlite3_column_int(statement, 3);
+                
                 //allocate memory for object
                 NSString* nameAndMade = [[NSString alloc] init];
                 nameAndMade = [nameAndMade stringByAppendingString:nameField];
                 nameAndMade = [nameAndMade stringByAppendingString:madeField];
                 _lblOutput.text = [NSString stringWithFormat:
                                    @"%@",nameAndMade];
+                validDevicesScanned = YES;
                 
             } else {
                 _lblOutput.text = @"Device not found";
@@ -147,6 +153,68 @@
         }
         sqlite3_close(_deviceTrackerDB);
     }
+    
+    if (validDevicesScanned) {
+        if(_isReturned)
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Checkout Device" message:@"Are you sure you would like to check out this device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+            [alertView show];
+            
+            if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+            {
+                NSString *querySQL = [NSString stringWithFormat:
+                                      @"UPDATE devices SET returned = 0 WHERE deviceid=\"%@\"",
+                                      _deviceID];
+                
+                const char *query_stmt = [querySQL UTF8String];
+                
+                if (sqlite3_prepare_v2(_deviceTrackerDB,
+                                       query_stmt, -1, &statement, NULL) == SQLITE_OK)
+                {
+                    if (sqlite3_step(statement) == SQLITE_DONE)
+                    {
+                        _lblOutput.text = @"Device checkout!";
+                    } else {
+                        _lblOutput.text = @"Device cant be checkout";
+                    }
+                    sqlite3_finalize(statement);
+                }
+                sqlite3_close(_deviceTrackerDB);
+            }
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Return Device" message:@"Are you sure you would like to return this device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+            [alertView show];
+            
+            if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+            {
+                NSString *querySQL = [NSString stringWithFormat:
+                                      @"UPDATE devices SET returned = 1 WHERE deviceid=\"%@\"",
+                                      _deviceID];
+                
+                const char *query_stmt = [querySQL UTF8String];
+                
+                if (sqlite3_prepare_v2(_deviceTrackerDB,
+                                       query_stmt, -1, &statement, NULL) == SQLITE_OK)
+                {
+                    if (sqlite3_step(statement) == SQLITE_DONE)
+                    {
+                        _lblOutput.text = @"Device returned";
+                    } else {
+                        _lblOutput.text = @"Device cant be returned";
+                    }
+                    sqlite3_finalize(statement);
+                }
+                sqlite3_close(_deviceTrackerDB);
+            }
+        }
+        _lblStatus.text = @"";
+        [_deviceID setString:@""];
+    }
+    
 }
 
 - (IBAction)insertPressed:(id)sender {
@@ -161,11 +229,11 @@
         // (val1, val2, val3),
         // (val1, val2, val3);
         NSString *combinedSQL = [NSString stringWithFormat:
-                                 @"INSERT INTO DEVICES ( DEVICEID , NAME , MADE) VALUES "
-                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\" ),"
-                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\" ),"
-                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\" ),"
-                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\" )"
+                                 @"INSERT INTO DEVICES ( DEVICEID , NAME , MADE, RETURNED) VALUES "
+                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\" , 1),"
+                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\" , 1),"
+                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\" , 1),"
+                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\" , 1)"
                                  ";"];
         
         const char *insert_stmt1 = [combinedSQL UTF8String];
@@ -296,6 +364,6 @@
     
 }
 
-
+- (BOOL)shouldAutorotate { return NO; }
 
 @end
