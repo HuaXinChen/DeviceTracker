@@ -15,6 +15,8 @@
 @property (nonatomic) BOOL isReading;
 @property (nonatomic) BOOL isReturned;
 @property (nonatomic, strong) NSMutableString* deviceID;
+@property (nonatomic, strong) dbManager *dbManager;
+
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -42,46 +44,11 @@
     
     
     //initialize db
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    NSString *docsDir;
-    NSArray *dirPaths;
-    
-    // Get the documents directory
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    docsDir = dirPaths[0];
-    
-    // Build the path to the database file
-    _databasePath = [[NSString alloc]
-                     initWithString: [docsDir stringByAppendingPathComponent:
-                                      @"deviceTracker.db"]];
-    
-    //Connect to database
-    NSFileManager *filemgr = [NSFileManager defaultManager];
-    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
-    {
-        const char *dbpath = [_databasePath UTF8String];
-        if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
-        {
-            char *errMsg;
-            //set schema if DEVICES table is not availabe
-            const char *sql_stmt =
-            "CREATE TABLE IF NOT EXISTS DEVICES (ID INTEGER PRIMARY KEY AUTOINCREMENT, DEVICEID TEXT, NAME TEXT, MADE TEXT, RETURNED INTEGER)";
-            
-            //error message in case of database failure
-            if (sqlite3_exec(_deviceTrackerDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
-            {
-                _lblStatus.text = @"Failed to create table";
-            }
-            
-            sqlite3_close(_deviceTrackerDB);
-            
-        } else {
-            _lblStatus.text = @"Failed to open/create database";
-        }
-    }
-    
+    _dbManager = [[dbManager alloc] init];
+
+    // Initilize table when program starts
+    if (![_dbManager initialize])
+        _lblStatus.text = @"Failed to create table";
     
 }
 
@@ -107,149 +74,23 @@
 
 - (IBAction)verifyPressed:(id)sender {
     
-    BOOL validDevicesScanned = NO;
+    NSString* _verifyResult = [_dbManager testVerify:_deviceID];
     
-    const char *dbpath = [_databasePath UTF8String];
-    sqlite3_stmt *statement;
+    _verifyResult = [_dbManager testVerify:_deviceID];
+    if(_verifyResult)
+        _lblOutput.text = _verifyResult;
+    else
+        _lblOutput.text = @"Device not found";
     
-    if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:
-                              @"SELECT deviceid, name, made, returned FROM devices WHERE deviceid=\"%@\"",
-                              //@"SELECT deviceid, name, made FROM devices"];
-                              _deviceID];
-        
-        
-        
-        const char *query_stmt = [querySQL UTF8String];
-        
-        if (sqlite3_prepare_v2(_deviceTrackerDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            if (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                NSString *nameField = [[NSString alloc]
-                                       initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 1)];
-                
-                NSString *madeField = [[NSString alloc]
-                                       initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 2)];
-                
-                _isReturned = (BOOL)sqlite3_column_int(statement, 3);
-                
-                //allocate memory for object
-                NSString* nameAndMade = [[NSString alloc] init];
-                nameAndMade = [nameAndMade stringByAppendingString:nameField];
-                nameAndMade = [nameAndMade stringByAppendingString:madeField];
-                _lblOutput.text = [NSString stringWithFormat:
-                                   @"%@",nameAndMade];
-                validDevicesScanned = YES;
-                
-            } else {
-                _lblOutput.text = @"Device not found";
-            }
-            sqlite3_finalize(statement);
-        }
-        sqlite3_close(_deviceTrackerDB);
-    }
-    
-    if (validDevicesScanned) {
-        if(_isReturned)
-        {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Checkout Device" message:@"Are you sure you would like to check out this device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            
-            [alertView show];
-            
-            if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
-            {
-                NSString *querySQL = [NSString stringWithFormat:
-                                      @"UPDATE devices SET returned = 0 WHERE deviceid=\"%@\"",
-                                      _deviceID];
-                
-                const char *query_stmt = [querySQL UTF8String];
-                
-                if (sqlite3_prepare_v2(_deviceTrackerDB,
-                                       query_stmt, -1, &statement, NULL) == SQLITE_OK)
-                {
-                    if (sqlite3_step(statement) == SQLITE_DONE)
-                    {
-                        _lblOutput.text = @"Device checkout!";
-                    } else {
-                        _lblOutput.text = @"Device cant be checkout";
-                    }
-                    sqlite3_finalize(statement);
-                }
-                sqlite3_close(_deviceTrackerDB);
-            }
-        }
-        else
-        {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Return Device" message:@"Are you sure you would like to return this device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            
-            [alertView show];
-            
-            if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
-            {
-                NSString *querySQL = [NSString stringWithFormat:
-                                      @"UPDATE devices SET returned = 1 WHERE deviceid=\"%@\"",
-                                      _deviceID];
-                
-                const char *query_stmt = [querySQL UTF8String];
-                
-                if (sqlite3_prepare_v2(_deviceTrackerDB,
-                                       query_stmt, -1, &statement, NULL) == SQLITE_OK)
-                {
-                    if (sqlite3_step(statement) == SQLITE_DONE)
-                    {
-                        _lblOutput.text = @"Device returned";
-                    } else {
-                        _lblOutput.text = @"Device cant be returned";
-                    }
-                    sqlite3_finalize(statement);
-                }
-                sqlite3_close(_deviceTrackerDB);
-            }
-        }
-        _lblStatus.text = @"";
-        [_deviceID setString:@""];
-    }
-    
+
 }
 
 - (IBAction)insertPressed:(id)sender {
-    sqlite3_stmt    *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    
-    if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
-    {
-        
-        //insert into tablename ( col1, col2, col3) values
-        // (val1, val2, val3),
-        // (val1, val2, val3),
-        // (val1, val2, val3);
-        NSString *combinedSQL = [NSString stringWithFormat:
-                                 @"INSERT INTO DEVICES ( DEVICEID , NAME , MADE, RETURNED) VALUES "
-                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\" , 1),"
-                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\" , 1),"
-                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\" , 1),"
-                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\" , 1)"
-                                 ";"];
-        
-        const char *insert_stmt1 = [combinedSQL UTF8String];
-        sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt1, -1, &statement, NULL);
-        
-        
-        if (sqlite3_step(statement) == SQLITE_DONE)
-        {
-            _lblOutput.text = @"Data added";
-        } else {
-            _lblOutput.text = @"Failed to add data";
-        }
-        sqlite3_finalize(statement);
-        sqlite3_close(_deviceTrackerDB);
-    }
-}
+    if ([_dbManager testInsertData])
+        _lblOutput.text = @"Data added";
+    else
+        _lblOutput.text = @"Failed to add data";
+   }
 
 - (IBAction)statusPressed:(id)sender {
     _lblStatus.text = @"test status pressed";

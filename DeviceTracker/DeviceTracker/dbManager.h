@@ -14,8 +14,15 @@
 @interface dbManager : NSObject
 
 - (BOOL)initialize;
-- (BOOL)checkOutDevice: (Device*) Device;
-- (BOOL)checkInWithDevice:(Device *) Device asUser:(User*)User;
+- (NSArray*)getDeviceStatus: (NSString*) deviceID;
+- (BOOL)borrowDevice: (NSString*) deviceID asUserName: (NSString*)userName;
+- (BOOL)returnDevice:(NSString*) deviceID;
+
+
+
+
+
+
 - (BOOL)testInsertData;
 - (NSMutableString*)testVerify: (NSMutableString*) deviceID;
 
