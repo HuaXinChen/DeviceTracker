@@ -89,15 +89,17 @@
             {
                 NSString *nameField = [[NSString alloc]
                                        initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 1)];
+                                       sqlite3_column_text(statement, 0)];
                 
                 NSString *madeField = [[NSString alloc]
                                        initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 2)];
+                                       sqlite3_column_text(statement, 1)];
                 
                 NSString *userNameField = [[NSString alloc]
                                        initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 3)];
+                                       sqlite3_column_text(statement, 2)];
+                
+                
                 deviceStatus = [NSArray arrayWithObjects:nameField, madeField, userNameField, nil];
                 
             }
@@ -130,20 +132,26 @@
         // (val1, val2, val3),
         // (val1, val2, val3);
         NSString *combinedSQL = [NSString stringWithFormat:
-                                 @"INSERT INTO DEVICES ( DEVICEID , DEVICENAME , MADE) VALUES "
-                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\" ),"
-                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\" ),"
-                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\" ),"
-                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\" )"
+                                 @"INSERT INTO DEVICES ( DEVICEID , DEVICENAME , MADE, USERNAME) VALUES "
+                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\", \"Eddie\" ),"
+                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\", \"\"),"
+                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\", \"Victor\" ),"
+                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\", \"\" )"
                                  ";"];
         
         const char *insert_stmt1 = [combinedSQL UTF8String];
         sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt1, -1, &statement, NULL);
+        
+        if (!sqlite3_step(statement) == SQLITE_DONE)
+            return false;
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_deviceTrackerDB);
+        
         return true;
     }
-    else{
-        return false;
-    }
+        
+    return false;
 }
 
 - (NSString*)testVerify: (NSMutableString*) deviceID{
@@ -195,12 +203,18 @@
     {
         const char *insert_stmt1 = [sqlStatement UTF8String];
         sqlite3_prepare_v2(_deviceTrackerDB, insert_stmt1, -1, &statement, NULL);
+        
+        
+        if (!sqlite3_step(statement) == SQLITE_DONE)
+            return false;
+        
+        sqlite3_finalize(statement);
+        sqlite3_close(_deviceTrackerDB);
+        
         return true;
     }
-    else{
-        return false;
-    }
- 
+    
+    return false;
 }
 
 

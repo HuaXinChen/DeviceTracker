@@ -74,14 +74,21 @@
 
 - (IBAction)verifyPressed:(id)sender {
     
-    NSString* _verifyResult = [_dbManager testVerify:_deviceID];
+    NSArray* deviceStatus = [_dbManager getDeviceStatus:_deviceID];
     
-    _verifyResult = [_dbManager testVerify:_deviceID];
-    if(_verifyResult)
-        _lblOutput.text = _verifyResult;
-    else
-        _lblOutput.text = @"Device not found";
-    
+    if (deviceStatus) {
+        
+        NSString* deviceName = (NSString*)deviceStatus[0];
+        NSString* deviceMade = (NSString*)deviceStatus[1];
+        NSString* userName = (NSString*)deviceStatus[2];
+        
+        if (userName)
+        {
+            _lblOutput.text = [NSString stringWithFormat:@"%@ , %@" , deviceMade, deviceName];
+            _lblStatus.text = userName;
+        }else
+            _lblStatus.text = @"Device available";
+    }
 
 }
 
