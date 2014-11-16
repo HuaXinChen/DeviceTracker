@@ -18,7 +18,6 @@
 		5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5749940D1A00AE8600F79F9F /* LaunchScreen.xib */; };
 		5749941B1A00AE8600F79F9F /* DeviceTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */; };
 		574994271A00AF1C00F79F9F /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994261A00AF1C00F79F9F /* Device.m */; };
-		574994291A00AF2D00F79F9F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994281A00AF2D00F79F9F /* User.m */; };
 		577807701A072C6E00D5FA02 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5778076F1A072C6E00D5FA02 /* beep.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +51,6 @@
 		5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTrackerTests.m; sourceTree = "<group>"; };
 		574994251A00AF0400F79F9F /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		574994261A00AF1C00F79F9F /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		574994281A00AF2D00F79F9F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		5749942A1A00AF3E00F79F9F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		5778076F1A072C6E00D5FA02 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,8 +141,6 @@
 			children = (
 				574994251A00AF0400F79F9F /* Device.h */,
 				574994261A00AF1C00F79F9F /* Device.m */,
-				5749942A1A00AF3E00F79F9F /* User.h */,
-				574994281A00AF2D00F79F9F /* User.m */,
 				4317B7F21A0DF9AD00746295 /* dbManager.h */,
 				4317B7F31A0DF9EE00746295 /* dbManager.m */,
 			);
@@ -196,7 +191,7 @@
 		574993F01A00AE8600F79F9F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = PNI;
 				TargetAttributes = {
 					574993F71A00AE8600F79F9F = {
@@ -256,7 +251,6 @@
 			files = (
 				574994011A00AE8600F79F9F /* AppDelegate.m in Sources */,
 				574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */,
-				574994291A00AF2D00F79F9F /* User.m in Sources */,
 				574994071A00AE8600F79F9F /* ViewController.m in Sources */,
 				574994271A00AF1C00F79F9F /* Device.m in Sources */,
 				4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */,

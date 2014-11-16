@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 #import "Device.h"
-#import "User.h"
 
 @interface dbManager : NSObject
 
