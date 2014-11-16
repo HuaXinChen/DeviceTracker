@@ -14,6 +14,7 @@
 
 - (BOOL)initialize;
 - (NSArray*)getDeviceStatus: (NSString*) deviceID;
+- (BOOL)isDeviceFoundInDB:(NSString*) deviceID;
 - (BOOL)borrowDevice: (NSString*) deviceID asUserName: (NSString*)userName;
 - (BOOL)returnDevice:(NSString*) deviceID;
 

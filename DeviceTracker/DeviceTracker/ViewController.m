@@ -13,10 +13,15 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic) BOOL isReading;
-@property (nonatomic) BOOL isReturned;
 @property (nonatomic, strong) NSMutableString* deviceID;
+@property (nonatomic, strong) NSMutableString* userID;
 @property (nonatomic, strong) dbManager *dbManager;
 
+#define returnAlertView 1
+#define borrowAlertView 2
+#define scanUserAlertView 3
+#define scanDeviceAlertView 4
+#define deviceNotFoundAlertView 5
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -34,11 +39,8 @@
     // Initially make the captureSession object nil.
     _captureSession = nil;
     
-    _isReading = NO;
-    _isReturned = YES;
-    
-    _deviceID = [[NSMutableString alloc] initWithString:@""];
-    
+    _deviceID = [[NSMutableString alloc] init];
+
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
     
@@ -55,7 +57,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [self startReading];
+    [self reset];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +109,20 @@
 
 #pragma mark - Private method implementation
 
+-(void)reset{
+    
+    _userID = nil;
+    _deviceID = nil;
+    
+    //_lblOutput.text = @"";
+    
+    _lblOutput.text = @"";
+    if (_lblOutput.text.length < 1)
+        _lblOutput.text = @"Please scan a device you would like to borrow!";
+        
+    [self startReading];
+}
+
 - (BOOL)startReading {
     NSError *error;
     
@@ -128,15 +144,14 @@
     // Set the input device on the capture session.
     [_captureSession addInput:input];
     
-    
     // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [_captureSession addOutput:captureMetadataOutput];
     
     // Create a new serial dispatch queue.
-    dispatch_queue_t dispatchQueue;
-    dispatchQueue = dispatch_queue_create("myQueue", NULL);
-    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
+    //dispatch_queue_t dispatchQueue;
+    //dispatchQueue = dispatch_queue_create("myQueue", NULL);
+    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
     
     // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
@@ -149,9 +164,10 @@
     // Start video capture.
     [_captureSession startRunning];
     
+    _isReading = YES;
+    
     return YES;
 }
-
 
 -(void)stopReading{
     // Stop video capture and make the capture session object nil.
@@ -160,8 +176,9 @@
     
     // Remove the video preview layer from the viewPreview view's layer.
     [_videoPreviewLayer removeFromSuperlayer];
+    
+    _isReading = NO;
 }
-
 
 -(void)loadBeepSound{
     // Get the path to the beep.mp3 file and convert it to a NSURL object.
@@ -183,32 +200,193 @@
     }
 }
 
+-(void)scannedDevice:(NSString*) deviceID{
+    NSLog(@"Device : %@ scanned.", deviceID);
+    
+    //Check if device could be found in DB
+    if ([_dbManager isDeviceFoundInDB:deviceID]) {
+        
+        _deviceID =[deviceID mutableCopy];
+        
+        _lblOutput.text = [NSString stringWithFormat:@"%@", _deviceID];
+        
+        NSArray* deviceStatus = [_dbManager getDeviceStatus:deviceID];
+        
+        if ([Device isDeviceAvailable:deviceStatus]) {
+            
+            NSLog(@"Device : %@ available", deviceID);
+            
+            if (_userID) {
+                UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
+                                                                       message:[NSString stringWithFormat:@"Does %@ want to borrow %@", _userID, _deviceID]
+                                                                      delegate:self
+                                                             cancelButtonTitle:@"Cancel"
+                                                             otherButtonTitles: nil];
+                [borrowAlert addButtonWithTitle:@"Borrow"];
+                [borrowAlert setTag:borrowAlertView];
+                [borrowAlert show];
+            }else{
+                UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device : %@ ",deviceID]
+                                                                         message:@"Please scan your ID QR to continue!"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles: nil];
+                [scanUserAlert setTag:scanUserAlertView];
+                [scanUserAlert show];
+            }
+        }else{
+            UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:@"Return Device?"
+                                                                   message:[NSString stringWithFormat:@"Do you want to return %@",deviceID]
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Cancel"
+                                                         otherButtonTitles: nil];
+            [returnAlert addButtonWithTitle:@"Return"];
+            [returnAlert setTag:returnAlertView];
+            [returnAlert show];
+        }
+        
+    }else{
+        NSLog(@"Device : %@ not found in DB", deviceID);
+        
+        UIAlertView * deviceNotFoundAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device : %@ ",deviceID]
+                                                                 message:@"Device not Found in DB, please try again!"
+                                                                delegate:self
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles: nil];
+        [deviceNotFoundAlert setTag:deviceNotFoundAlertView];
+        [deviceNotFoundAlert show];
+    }
+}
+
+-(void)scannedUser:(NSString*) userID{
+    NSLog(@"User : %@ scanned.", userID);
+    
+    
+    //TODO: Check if ID is valid
+    _userID = [userID mutableCopy];
+    
+    if(_deviceID){
+        UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
+                                                               message:[NSString stringWithFormat:@"Does %@ want to borrow %@", _userID, _deviceID]
+                                                              delegate:self
+                                                     cancelButtonTitle:@"Cancel"
+                                                     otherButtonTitles: nil];
+        [borrowAlert addButtonWithTitle:@"Borrow"];
+        [borrowAlert setTag:borrowAlertView];
+        [borrowAlert show];
+    }
+    else{
+        UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User : %@ ",_userID]
+                                                                 message:@"Please scan your Device to continue!"
+                                                                delegate:self
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles: nil];
+        [scanDeviceAlert setTag:scanDeviceAlertView];
+        [scanDeviceAlert show];
+
+    }
+}
+
+#pragma mark - UIAlertViewDelegate method implementation
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    //NSLog(@"Button Index =%ld",buttonIndex);
+    if (buttonIndex == 0)
+    {
+        if(alertView.tag == returnAlertView){
+            NSLog(@"User cancel on return");
+            [self reset];
+        }
+        else if(alertView.tag == borrowAlertView){
+            NSLog(@"User cancel on borrow");
+            [self reset];
+        }
+        else if(alertView.tag == scanUserAlertView){
+            NSLog(@"User is going to scan ID next");
+            self.lblStatus.text = @"Please scan your ID to continue checkout!";
+            [self startReading];
+        }
+        else if(alertView.tag == scanDeviceAlertView){
+            NSLog(@"User is going to scan device next");
+            self.lblStatus.text = @"Please scan the device you would like to borrow!";
+            [self startReading];
+        }
+        else if(alertView.tag == deviceNotFoundAlertView){
+            NSLog(@"User is going to start again");
+            
+            [self reset];
+        }
+    }
+    else if(buttonIndex == 1)
+    {
+        if(alertView.tag == returnAlertView){
+            NSLog(@"User would like to return");
+            
+            if ([self.dbManager returnDevice:self.deviceID])
+                self.lblStatus.text = @"Checkin completed!";
+            else
+                self.lblStatus.text = @"Device cannot be returned at this moment, please try again";
+            
+            [self reset];
+        }
+        else if(alertView.tag == borrowAlertView){
+            NSLog(@"User would like to borrow");
+            
+            if ([self.dbManager borrowDevice:self.deviceID asUserName:self.userID])
+                self.lblStatus.text = @"Checkout completed!";
+            else
+                self.lblStatus.text = @"Device cannot be checked out at this moment, please try again";
+            
+            [self reset];
+        }
+    }
+}
+
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate method implementation
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
     
-    // Check if the metadataObjects array is not nil and it contains at least one object.
-    if (metadataObjects != nil && [metadataObjects count] > 0) {
-        // Get the metadata object.
-        AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects objectAtIndex:0];
-        if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
-            // If the found metadata is equal to the QR code metadata then update the status label's text,
-            // stop reading and change the bar button item's title and the flag's value.
-            // Everything is done on the main thread.
-            [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
-            
-            //[self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
-            //[_btnScan performSelectorOnMainThread:@selector(setTitle:) withObject:@"Start!" waitUntilDone:NO];
-            
-            // If the audio player is not nil, then play the sound effect.
-            if (_audioPlayer) {
-                [_audioPlayer play];
+    NSLog(@"QR output called");
+    
+    if (_isReading) {
+        // Check if the metadataObjects array is not nil and it contains at least one object.
+        if (metadataObjects != nil && [metadataObjects count] > 0) {
+            // Get the metadata object.
+            AVMetadataMachineReadableCodeObject *metadataObj = [metadataObjects objectAtIndex:0];
+            if ([[metadataObj type] isEqualToString:AVMetadataObjectTypeQRCode]) {
+                // If the found metadata is equal to the QR code metadata then update the status label's text,
+                // stop reading and change the bar button item's title and the flag's value.
+                // Everything is done on the main thread.
+                
+                if ([[metadataObj stringValue] containsString:@"PNI"]) {
+                    
+                    _isReading= NO;
+                    
+                    [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
+                    
+                    if([[metadataObj stringValue] containsString:@"MTD"]){
+                        
+                        [self scannedDevice:[metadataObj stringValue]];
+                        
+                    }else if([[metadataObj stringValue] containsString:@"USR"]){
+                        
+                        [self scannedUser:[metadataObj stringValue]];
+                    }
+                    
+                    [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                    
+                    // If the audio player is not nil, then play the sound effect.
+                    if (_audioPlayer) {
+                        [_audioPlayer play];
+                    }
+                    
+                }
             }
-            
-            //make a copy of the device id when QR reading is successful
-            [_deviceID setString: _lblStatus.text];
         }
+
     }
+    
     
 }
 

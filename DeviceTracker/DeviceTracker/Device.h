@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "dbManager.h"
 
 @interface Device : NSObject
 
@@ -19,5 +20,6 @@
 @property (strong, nonatomic) NSString *os;
 
 + (NSArray*)getCheckoutDevices;
++ (BOOL)isDeviceAvailable:(NSArray*) deviceStatus;
 
 @end

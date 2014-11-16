@@ -15,6 +15,15 @@
 
 @implementation Device
 
+
+
++ (BOOL)isDeviceAvailable:(NSArray*) deviceStatus{
+    if ([(NSString*)deviceStatus[2] length] == 0)
+        return true;
+    
+    return false;
+}
+
 + (NSArray*)getCheckoutDevices
 {
     //Get checkout devices from DB

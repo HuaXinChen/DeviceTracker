@@ -66,6 +66,14 @@
     return true;
 }
 
+- (BOOL)isDeviceFoundInDB:(NSString*) deviceID{
+    
+    NSArray* status = [self getDeviceStatus:deviceID];
+    
+    return (!(status == nil || [status count] == 0 ));
+    
+}
+
 - (NSArray*)getDeviceStatus: (NSString*) deviceID
 {
     const char *dbpath = [_databasePath UTF8String];
@@ -112,13 +120,21 @@
 
 - (BOOL)borrowDevice: (NSString*) deviceID asUserName: (NSString*)userName
 {
-    return true;
+    NSString *querySQL = [NSString stringWithFormat:
+                          @"UPDATE devices SET username = \"%@\" WHERE deviceid=\"%@\"",
+                          userName,
+                          deviceID];
+
+    return [self executeSQLUsing: querySQL];
 }
 
 - (BOOL)returnDevice:(NSString*) deviceID
 {
-    return true;
-}
+    NSString *querySQL = [NSString stringWithFormat:
+                          @"UPDATE devices SET username = \"\" WHERE deviceid=\"%@\"",
+                          deviceID];
+    
+    return [self executeSQLUsing: querySQL];}
 
 - (BOOL)testInsertData{
     
@@ -195,7 +211,7 @@
 }
 
 
-- (BOOL)insertDataUsing: (NSString*) sqlStatement
+- (BOOL)executeSQLUsing: (NSString*) sqlStatement
 {
     sqlite3_stmt    *statement;
     const char *dbpath = [_databasePath UTF8String];

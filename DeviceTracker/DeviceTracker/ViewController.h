@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "dbManager.h"
 
-@interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
+@interface ViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewPreview;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
