@@ -47,7 +47,7 @@
             char *errMsg;
             //set schema if DEVICES table is not availabe
             const char *sql_stmt =
-            "CREATE TABLE IF NOT EXISTS DEVICES (ID INTEGER PRIMARY KEY AUTOINCREMENT, DEVICEID TEXT, DEVICENAME TEXT, MADE TEXT, USERNAME TEXT)";
+            "CREATE TABLE IF NOT EXISTS DEVICES (ID INTEGER PRIMARY KEY AUTOINCREMENT, DEVICEID TEXT, MODEL TEXT, MADE TEXT, OS TEXT, SCREENSIZE TEXT, USER TEXT, CHECKOUTTIME DATETIME)";
             
             //error message in case of database failure
             if (sqlite3_exec(_deviceTrackerDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
@@ -85,7 +85,7 @@
     if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
-                              @"SELECT devicename, made, username FROM devices WHERE deviceid=\"%@\"",
+                              @"SELECT model, made, os, screensize, user, checkouttime FROM devices WHERE deviceid=\"%@\"",
                               deviceID];
         const char *query_stmt = [querySQL UTF8String];
         
@@ -95,20 +95,26 @@
         {
             if (sqlite3_step(statement) == SQLITE_ROW)
             {
-                NSString *nameField = [[NSString alloc]
-                                       initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 0)];
-                
+                NSString *modelField = [[NSString alloc]
+                                        initWithUTF8String:(const char *)
+                                        sqlite3_column_text(statement, 0)];
                 NSString *madeField = [[NSString alloc]
                                        initWithUTF8String:(const char *)
                                        sqlite3_column_text(statement, 1)];
-                
+                NSString *osField = [[NSString alloc]
+                                     initWithUTF8String:(const char *)
+                                     sqlite3_column_text(statement, 2)];
+                NSString *screenField = [[NSString alloc]
+                                         initWithUTF8String:(const char *)
+                                         sqlite3_column_text(statement, 3)];
                 NSString *userNameField = [[NSString alloc]
+                                           initWithUTF8String:(const char *)
+                                           sqlite3_column_text(statement, 4)];
+                NSString *timeField = [[NSString alloc]
                                        initWithUTF8String:(const char *)
-                                       sqlite3_column_text(statement, 2)];
+                                       sqlite3_column_text(statement, 5)];
                 
-                
-                deviceStatus = [NSArray arrayWithObjects:nameField, madeField, userNameField, nil];
+                deviceStatus = [NSArray arrayWithObjects:modelField, madeField, osField, screenField, userNameField, timeField, nil];
                 
             }
             sqlite3_finalize(statement);
@@ -121,7 +127,7 @@
 - (BOOL)borrowDevice: (NSString*) deviceID asUserName: (NSString*)userName
 {
     NSString *querySQL = [NSString stringWithFormat:
-                          @"UPDATE devices SET username = \"%@\" WHERE deviceid=\"%@\"",
+                          @"UPDATE devices SET user = \"%@\" WHERE deviceid=\"%@\"",
                           userName,
                           deviceID];
 
@@ -131,28 +137,28 @@
 - (BOOL)returnDevice:(NSString*) deviceID
 {
     NSString *querySQL = [NSString stringWithFormat:
-                          @"UPDATE devices SET username = \"\" WHERE deviceid=\"%@\"",
+                          @"UPDATE devices SET user = \"\" WHERE deviceid=\"%@\"",
                           deviceID];
     
     return [self executeSQLUsing: querySQL];}
 
-- (BOOL)testInsertData{
+- (BOOL)insertData{
     
     sqlite3_stmt    *statement;
     const char *dbpath = [_databasePath UTF8String];
+    
     if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
     {
-        
-        //insert into tablename ( col1, col2, col3) values
-        // (val1, val2, val3),
-        // (val1, val2, val3),
-        // (val1, val2, val3);
         NSString *combinedSQL = [NSString stringWithFormat:
-                                 @"INSERT INTO DEVICES ( DEVICEID , DEVICENAME , MADE, USERNAME) VALUES "
-                                 "(\"PNI-QA-MTD-001\", \"GALAXY S1\", \"Samsung1\", \"Eddie\" ),"
-                                 "(\"PNI-QA-MTD-003\", \"GALAXY S3\", \"Samsung3\", \"\"),"
-                                 "(\"PNI-QA-MTD-005\", \"GALAXY S5\", \"Samsung5\", \"Victor\" ),"
-                                 "(\"PNI-QA-MTD-007\", \"GALAXY S7\", \"Samsung7\", \"\" )"
+                                 @"INSERT INTO DEVICES ( deviceid , model, made, os, screensize, user, checkouttime) VALUES "
+                                 "(\"PNI-QA-MTD-006\", \"iPhone 5 (Black)\",       \"Apple\", \"8.0\",   \"4 inch\",   \"Eddie\",  \"now\"),"
+                                 "(\"PNI-QA-MTD-001\", \"iPhone 5 (Black)\",       \"Apple\", \"7.1\",   \"4 inch\",   \"\",       \"\"   ),"
+                                 "(\"PNI-QA-MTD-027\", \"iPhone 5 S (Gold)\",      \"Apple\", \"8.0\" ,  \"4 inch\",   \"Victor\", \"now\"),"
+                                 "(\"PNI-QA-MTD-035\", \"iPhone 5 C (Green)\",     \"Apple\", \"7.1.2\", \"4 inch\",   \"Arthur\", \"now\"),"
+                                 "(\"PNI-QA-MTD-037\", \"iPhone 6 (Space Gray)\",  \"Apple\", \"8.0.2\", \"4.7 inch\", \"\",       \"\"   ),"
+                                 "(\"PNI-QA-MTD-003\", \"iPod Touch 4\",           \"Apple\", \"6.1.6\", \"3.5 inch\", \"Ted\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-032\", \"iPad Mini (White)\",      \"Apple\", \"8.0\",   \"7.9 inch\", \"\",       \"\"   ),"
+                                 "(\"PNI-QA-MTD-025\", \"iPad Mini (Black)\",      \"Apple\", \"7.1.2\", \"7.9 inch\", \"Eddie\",  \"now\")"
                                  ";"];
         
         const char *insert_stmt1 = [combinedSQL UTF8String];
@@ -160,13 +166,12 @@
         
         if (!sqlite3_step(statement) == SQLITE_DONE)
             return false;
-        
         sqlite3_finalize(statement);
         sqlite3_close(_deviceTrackerDB);
         
         return true;
     }
-        
+    
     return false;
 }
 

@@ -17,6 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Assign tab bar item with titles
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    UITabBarItem *scanTabBar = [tabBar.items objectAtIndex:0];
+    UITabBarItem *statusTabBar = [tabBar.items objectAtIndex:1];
+    
+    [scanTabBar initWithTitle:@"Scanner"
+                        image:[UIImage imageNamed:@"32_QR_Icon"]
+                selectedImage:[UIImage imageNamed:@"QR_Icon_Pressed"]];
+     
+    [statusTabBar initWithTitle:@"Status"
+                          image:[UIImage imageNamed:@"QR_Icon"]
+                  selectedImage:[UIImage imageNamed:@"QR_Icon_Pressed"]];
+    
     return YES;
 }
 

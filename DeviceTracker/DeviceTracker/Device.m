@@ -18,7 +18,7 @@
 
 
 + (BOOL)isDeviceAvailable:(NSArray*) deviceStatus{
-    if ([(NSString*)deviceStatus[2] length] == 0)
+    if ([(NSString*)deviceStatus[4] length] == 0)
         return true;
     
     return false;

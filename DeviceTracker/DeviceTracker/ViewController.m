@@ -46,10 +46,10 @@
     
     
     //initialize db
-    _dbManager = [[dbManager alloc] init];
+    self.dbManager = [[dbManager alloc] init];
 
     // Initilize table when program starts
-    if (![_dbManager initialize])
+    if (![self.dbManager initialize])
         _lblStatus.text = @"Failed to create table";
     
 }
@@ -76,26 +76,34 @@
 
 - (IBAction)verifyPressed:(id)sender {
     
-    NSArray* deviceStatus = [_dbManager getDeviceStatus:_deviceID];
+    NSArray* deviceStatus = [self.dbManager getDeviceStatus:_deviceID];
     
     if (deviceStatus) {
         
-        NSString* deviceName = (NSString*)deviceStatus[0];
+        NSString* deviceModel = (NSString*)deviceStatus[0];
         NSString* deviceMade = (NSString*)deviceStatus[1];
-        NSString* userName = (NSString*)deviceStatus[2];
+        NSString* deviceOS = (NSString*)deviceStatus[2];
+        NSString* deviceScreen = (NSString*)deviceStatus[3];
+        NSString* userName = (NSString*)deviceStatus[4];
+        NSString* checkOutTime = (NSString*)deviceStatus[5];
         
-        if (userName)
-        {
-            _lblOutput.text = [NSString stringWithFormat:@"%@ , %@" , deviceMade, deviceName];
+        
+            _lblOutput.text = [NSString stringWithFormat:@"%@ , %@" , deviceMade, deviceModel];
             _lblStatus.text = userName;
-        }else
-            _lblStatus.text = @"Device available";
+        
+        
+        
+            UIImage *image = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+            _imageOutput.contentMode = UIViewContentModeScaleAspectFit;
+            _imageOutput.clipsToBounds = YES;
+            [_imageOutput setImage:image];
     }
-
+    
 }
 
+
 - (IBAction)insertPressed:(id)sender {
-    if ([_dbManager testInsertData])
+    if ([self.dbManager insertData])
         _lblOutput.text = @"Data added";
     else
         _lblOutput.text = @"Failed to add data";
@@ -204,13 +212,13 @@
     NSLog(@"Device : %@ scanned.", deviceID);
     
     //Check if device could be found in DB
-    if ([_dbManager isDeviceFoundInDB:deviceID]) {
+    if ([self.dbManager isDeviceFoundInDB:deviceID]) {
         
         _deviceID =[deviceID mutableCopy];
         
         _lblOutput.text = [NSString stringWithFormat:@"%@", _deviceID];
         
-        NSArray* deviceStatus = [_dbManager getDeviceStatus:deviceID];
+        NSArray* deviceStatus = [self.dbManager getDeviceStatus:deviceID];
         
         if ([Device isDeviceAvailable:deviceStatus]) {
             
@@ -261,9 +269,12 @@
 -(void)scannedUser:(NSString*) userID{
     NSLog(@"User : %@ scanned.", userID);
     
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 40, 40)];
+    [imageView setImage:[UIImage imageNamed:@"QR_Icon.png"]];
+
     
     //TODO: Check if ID is valid
-    _userID = [userID mutableCopy];
+    _userID = [[userID mutableCopy] componentsSeparatedByString:@"-"][3];
     
     if(_deviceID){
         UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
@@ -272,6 +283,7 @@
                                                      cancelButtonTitle:@"Cancel"
                                                      otherButtonTitles: nil];
         [borrowAlert addButtonWithTitle:@"Borrow"];
+        [borrowAlert addSubview:imageView];
         [borrowAlert setTag:borrowAlertView];
         [borrowAlert show];
     }
@@ -347,8 +359,6 @@
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
     
-    NSLog(@"QR output called");
-    
     if (_isReading) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if (metadataObjects != nil && [metadataObjects count] > 0) {
@@ -367,9 +377,13 @@
                     
                     if([[metadataObj stringValue] containsString:@"MTD"]){
                         
+                        NSLog(@"MTD Scanned");
+                        
                         [self scannedDevice:[metadataObj stringValue]];
                         
                     }else if([[metadataObj stringValue] containsString:@"USR"]){
+                        
+                        NSLog(@"USR Scanned");
                         
                         [self scannedUser:[metadataObj stringValue]];
                     }

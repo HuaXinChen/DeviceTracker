@@ -10,6 +10,14 @@
 		4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4317B7F31A0DF9EE00746295 /* dbManager.m */; };
 		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
 		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
+		5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703AD231A1FBE4A000CACC8 /* StatusViewController.m */; };
+		5703AD2D1A1FE661000CACC8 /* iPhone 5 S (Gold).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */; };
+		5703AD2E1A1FE661000CACC8 /* iPad Mini (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD271A1FE661000CACC8 /* iPad Mini (White).jpg */; };
+		5703AD2F1A1FE661000CACC8 /* iPhone 5 (Black).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD281A1FE661000CACC8 /* iPhone 5 (Black).jpg */; };
+		5703AD301A1FE661000CACC8 /* iPad Mini (Black).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD291A1FE661000CACC8 /* iPad Mini (Black).jpg */; };
+		5703AD311A1FE661000CACC8 /* iPod Touch (4th Gen).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD2A1A1FE661000CACC8 /* iPod Touch (4th Gen).jpg */; };
+		5703AD321A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */; };
+		5703AD331A1FE661000CACC8 /* iPhone 5 C (Green).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */; };
 		574993FE1A00AE8600F79F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 574993FD1A00AE8600F79F9F /* main.m */; };
 		574994011A00AE8600F79F9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994001A00AE8600F79F9F /* AppDelegate.m */; };
 		574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 574994021A00AE8600F79F9F /* DeviceTracker.xcdatamodeld */; };
@@ -36,6 +44,15 @@
 		4317B7F31A0DF9EE00746295 /* dbManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dbManager.m; sourceTree = "<group>"; };
 		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		5703AD221A1FBE4A000CACC8 /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
+		5703AD231A1FBE4A000CACC8 /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
+		5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 5 S (Gold).jpg"; sourceTree = "<group>"; };
+		5703AD271A1FE661000CACC8 /* iPad Mini (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPad Mini (White).jpg"; sourceTree = "<group>"; };
+		5703AD281A1FE661000CACC8 /* iPhone 5 (Black).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 5 (Black).jpg"; sourceTree = "<group>"; };
+		5703AD291A1FE661000CACC8 /* iPad Mini (Black).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPad Mini (Black).jpg"; sourceTree = "<group>"; };
+		5703AD2A1A1FE661000CACC8 /* iPod Touch (4th Gen).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPod Touch (4th Gen).jpg"; sourceTree = "<group>"; };
+		5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 6 (Space Gray).jpg"; sourceTree = "<group>"; };
+		5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 5 C (Green).jpg"; sourceTree = "<group>"; };
 		574993F81A00AE8600F79F9F /* DeviceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574993FC1A00AE8600F79F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		574993FD1A00AE8600F79F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,9 +112,18 @@
 		574993FA1A00AE8600F79F9F /* DeviceTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */,
+				5703AD271A1FE661000CACC8 /* iPad Mini (White).jpg */,
+				5703AD281A1FE661000CACC8 /* iPhone 5 (Black).jpg */,
+				5703AD291A1FE661000CACC8 /* iPad Mini (Black).jpg */,
+				5703AD2A1A1FE661000CACC8 /* iPod Touch (4th Gen).jpg */,
+				5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */,
+				5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */,
 				574994241A00AED000F79F9F /* Model */,
 				574993FF1A00AE8600F79F9F /* AppDelegate.h */,
 				574994001A00AE8600F79F9F /* AppDelegate.m */,
+				5703AD221A1FBE4A000CACC8 /* StatusViewController.h */,
+				5703AD231A1FBE4A000CACC8 /* StatusViewController.m */,
 				574994051A00AE8600F79F9F /* ViewController.h */,
 				574994061A00AE8600F79F9F /* ViewController.m */,
 				436A81F11A0A018B009A04B6 /* Main.storyboard */,
@@ -228,10 +254,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5703AD331A1FE661000CACC8 /* iPhone 5 C (Green).jpg in Resources */,
+				5703AD311A1FE661000CACC8 /* iPod Touch (4th Gen).jpg in Resources */,
 				5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */,
+				5703AD301A1FE661000CACC8 /* iPad Mini (Black).jpg in Resources */,
+				5703AD321A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg in Resources */,
 				577807701A072C6E00D5FA02 /* beep.mp3 in Resources */,
+				5703AD2F1A1FE661000CACC8 /* iPhone 5 (Black).jpg in Resources */,
 				5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */,
 				436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */,
+				5703AD2D1A1FE661000CACC8 /* iPhone 5 S (Gold).jpg in Resources */,
+				5703AD2E1A1FE661000CACC8 /* iPad Mini (White).jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +286,7 @@
 				574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */,
 				574994071A00AE8600F79F9F /* ViewController.m in Sources */,
 				574994271A00AF1C00F79F9F /* Device.m in Sources */,
+				5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */,
 				4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */,
 				574993FE1A00AE8600F79F9F /* main.m in Sources */,
 			);

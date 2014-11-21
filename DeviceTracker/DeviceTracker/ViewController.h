@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lblOutput;
 @property (weak, nonatomic) IBOutlet UIButton *btnScan;
+@property (weak, nonatomic) IBOutlet UIImageView *imageOutput;
 
 //verify button
 - (IBAction)scanPressed:(id)sender;
