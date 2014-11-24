@@ -92,7 +92,6 @@
             _lblStatus.text = userName;
         
         
-        
             UIImage *image = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
             _imageOutput.contentMode = UIViewContentModeScaleAspectFit;
             _imageOutput.clipsToBounds = YES;
@@ -230,6 +229,17 @@
                                                                       delegate:self
                                                              cancelButtonTitle:@"Cancel"
                                                              otherButtonTitles: nil];
+                
+                //add image to pop up for iOS 7+
+                //set image view size
+                UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
+                //load image
+                UIImage *deviceImage = [UIImage imageNamed:@"iPhone 6 (Space Gray).jpg"];
+                //set image to imageView
+                [deviceImageView setImage:deviceImage];
+                //insert image view to the pop up
+                [borrowAlert setValue:deviceImageView forKey:@"accessoryView"];
+                
                 [borrowAlert addButtonWithTitle:@"Borrow"];
                 [borrowAlert setTag:borrowAlertView];
                 [borrowAlert show];
@@ -248,9 +258,29 @@
                                                                   delegate:self
                                                          cancelButtonTitle:@"Cancel"
                                                          otherButtonTitles: nil];
+            
+            //add image to pop up for iOS 7+
+            //set image view size
+            UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
+            //load image
+            UIImage *deviceImage = [UIImage imageNamed:@"iPhone 6 (Space Gray).jpg"];
+            //set image to imageView
+            [deviceImageView setImage:deviceImage];
+            //insert image view to the pop up
+            [returnAlert setValue:deviceImageView forKey:@"accessoryView"];
+            
+            //add options and show Alert
             [returnAlert addButtonWithTitle:@"Return"];
             [returnAlert setTag:returnAlertView];
             [returnAlert show];
+
+// 高大上
+//            PopUpViewController *popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
+//            [popViewController setTitle:@"This is a popup view"];
+//            [popViewController showInView:self.view
+//                                withImage:[UIImage imageNamed:@"iPhone 5 (Black).jpg"]
+//                              withMessage:@"Your Message" animated:YES];
+            
         }
         
     }else{
@@ -394,14 +424,10 @@
                     if (_audioPlayer) {
                         [_audioPlayer play];
                     }
-                    
                 }
             }
         }
-
     }
-    
-    
 }
 
 - (BOOL)shouldAutorotate { return NO; }
