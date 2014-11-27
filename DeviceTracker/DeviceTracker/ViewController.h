@@ -17,12 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lblOutput;
 //@property (weak, nonatomic) IBOutlet UIButton *btnScan;
-@property (weak, nonatomic) IBOutlet UIImageView *imageOutput;
+//@property (weak, nonatomic) IBOutlet UIImageView *imageOutput;
 
 //verify button
 //- (IBAction)scanPressed:(id)sender;
 //- (IBAction)statusPressed:(id)sender;
-- (IBAction)verifyPressed:(id)sender;
+//- (IBAction)verifyPressed:(id)sender;
 - (IBAction)insertPressed:(id)sender;
 
 

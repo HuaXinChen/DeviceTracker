@@ -74,33 +74,6 @@
     _lblStatus.text = @"test scan pressed";
 }
 
-- (IBAction)verifyPressed:(id)sender {
-    
-    NSArray* deviceStatus = [self.dbManager getDeviceStatus:_deviceID];
-    
-    if (deviceStatus) {
-        
-        NSString* deviceModel = (NSString*)deviceStatus[0];
-        NSString* deviceMade = (NSString*)deviceStatus[1];
-        NSString* deviceOS = (NSString*)deviceStatus[2];
-        NSString* deviceScreen = (NSString*)deviceStatus[3];
-        NSString* userName = (NSString*)deviceStatus[4];
-        NSString* checkOutTime = (NSString*)deviceStatus[5];
-        
-        
-            _lblOutput.text = [NSString stringWithFormat:@"%@ , %@" , deviceMade, deviceModel];
-            _lblStatus.text = userName;
-        
-        
-            UIImage *image = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
-            _imageOutput.contentMode = UIViewContentModeScaleAspectFit;
-            _imageOutput.clipsToBounds = YES;
-            [_imageOutput setImage:image];
-    }
-    
-}
-
-
 - (IBAction)insertPressed:(id)sender {
     if ([self.dbManager insertData])
         _lblOutput.text = @"Data added";
@@ -120,8 +93,6 @@
     
     _userID = nil;
     _deviceID = nil;
-    
-    //_lblOutput.text = @"";
     
     _lblOutput.text = @"";
     if (_lblOutput.text.length < 1)
@@ -217,7 +188,10 @@
         
         _lblOutput.text = [NSString stringWithFormat:@"%@", _deviceID];
         
+        //store information for device status
         NSArray* deviceStatus = [self.dbManager getDeviceStatus:deviceID];
+        NSString* deviceModel = (NSString*)deviceStatus[0];
+        
         
         if ([Device isDeviceAvailable:deviceStatus]) {
             
@@ -234,9 +208,11 @@
                 //set image view size
                 UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
                 //load image
-                UIImage *deviceImage = [UIImage imageNamed:@"iPhone 6 (Space Gray).jpg"];
-                //set image to imageView
+                UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+                
+                //set image to imageView keep the ratio
                 [deviceImageView setImage:deviceImage];
+                deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
                 //insert image view to the pop up
                 [borrowAlert setValue:deviceImageView forKey:@"accessoryView"];
                 
@@ -254,7 +230,7 @@
             }
         }else{
             UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:@"Return Device?"
-                                                                   message:[NSString stringWithFormat:@"Do you want to return %@",deviceID]
+                                                                   message:[NSString stringWithFormat:@"Do you want to return %@",deviceModel]
                                                                   delegate:self
                                                          cancelButtonTitle:@"Cancel"
                                                          otherButtonTitles: nil];
@@ -263,9 +239,11 @@
             //set image view size
             UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
             //load image
-            UIImage *deviceImage = [UIImage imageNamed:@"iPhone 6 (Space Gray).jpg"];
-            //set image to imageView
+            UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+            //set image to imageView and keep the ratio
             [deviceImageView setImage:deviceImage];
+            deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
+            
             //insert image view to the pop up
             [returnAlert setValue:deviceImageView forKey:@"accessoryView"];
             
@@ -273,14 +251,6 @@
             [returnAlert addButtonWithTitle:@"Return"];
             [returnAlert setTag:returnAlertView];
             [returnAlert show];
-
-// 高大上
-//            PopUpViewController *popViewController = [[PopUpViewController alloc] initWithNibName:@"PopUpViewController" bundle:nil];
-//            [popViewController setTitle:@"This is a popup view"];
-//            [popViewController showInView:self.view
-//                                withImage:[UIImage imageNamed:@"iPhone 5 (Black).jpg"]
-//                              withMessage:@"Your Message" animated:YES];
-            
         }
         
     }else{
