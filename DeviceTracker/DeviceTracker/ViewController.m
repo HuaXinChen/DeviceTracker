@@ -60,6 +60,10 @@
     [self reset];
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [self stopReading];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -94,9 +98,9 @@
     _userID = nil;
     _deviceID = nil;
     
-    _lblOutput.text = @"";
-    if (_lblOutput.text.length < 1)
-        _lblOutput.text = @"Please scan a device you would like to borrow!";
+    //_lblOutput.text = @"";
+    if (_lblStatus.text.length < 1)
+        _lblStatus.text = @"Please scan a device you would like to continue!";
         
     [self startReading];
 }
@@ -272,6 +276,9 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 40, 40)];
     [imageView setImage:[UIImage imageNamed:@"QR_Icon.png"]];
 
+    //store information for device status
+    NSArray* deviceStatus = [self.dbManager getDeviceStatus:self.deviceID];
+    NSString* deviceModel = (NSString*)deviceStatus[0];
     
     //TODO: Check if ID is valid
     _userID = [[userID mutableCopy] componentsSeparatedByString:@"-"][3];
@@ -282,8 +289,20 @@
                                                               delegate:self
                                                      cancelButtonTitle:@"Cancel"
                                                      otherButtonTitles: nil];
+        
+        //add image to pop up for iOS 7+
+        //set image view size
+        UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
+        //load image
+        UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+        
+        //set image to imageView keep the ratio
+        [deviceImageView setImage:deviceImage];
+        deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
+        //insert image view to the pop up
+        [borrowAlert setValue:deviceImageView forKey:@"accessoryView"];
+        
         [borrowAlert addButtonWithTitle:@"Borrow"];
-        [borrowAlert addSubview:imageView];
         [borrowAlert setTag:borrowAlertView];
         [borrowAlert show];
     }

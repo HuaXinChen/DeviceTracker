@@ -25,12 +25,12 @@
     UITabBarItem *statusTabBar = [tabBar.items objectAtIndex:1];
     
     [scanTabBar initWithTitle:@"Scanner"
-                        image:[UIImage imageNamed:@"32_QR_Icon"]
-                selectedImage:[UIImage imageNamed:@"QR_Icon_Pressed"]];
+                        image:[UIImage imageNamed:@"search"]
+                selectedImage:[UIImage imageNamed:@"search"]];
      
     [statusTabBar initWithTitle:@"Status"
-                          image:[UIImage imageNamed:@"QR_Icon"]
-                  selectedImage:[UIImage imageNamed:@"QR_Icon_Pressed"]];
+                          image:[UIImage imageNamed:@"top_charts"]
+                  selectedImage:[UIImage imageNamed:@"top_charts"]];
     
     return YES;
 }

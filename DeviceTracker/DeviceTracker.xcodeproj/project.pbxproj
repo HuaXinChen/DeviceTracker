@@ -26,7 +26,13 @@
 		5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5749940D1A00AE8600F79F9F /* LaunchScreen.xib */; };
 		5749941B1A00AE8600F79F9F /* DeviceTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */; };
 		574994271A00AF1C00F79F9F /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994261A00AF1C00F79F9F /* Device.m */; };
+		5776A9641A303FD700CDC707 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9621A303FD700CDC707 /* search@3x.png */; };
+		5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9631A303FD700CDC707 /* top_charts@3x.png */; };
+		5776A9671A30FC8700CDC707 /* logo_PNI.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9661A30FC8700CDC707 /* logo_PNI.png */; };
 		577807701A072C6E00D5FA02 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5778076F1A072C6E00D5FA02 /* beep.mp3 */; };
+		57E5EB361A2E5D4E002F31E2 /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E5EB351A2E5D4E002F31E2 /* StatusCell.m */; };
+		57E5EB3A1A2EC155002F31E2 /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 57E5EB381A2EC155002F31E2 /* available.png */; };
+		57E5EB3B1A2EC155002F31E2 /* unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 57E5EB391A2EC155002F31E2 /* unavailable.png */; };
 		8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7351A27B2DE000F7972 /* Optimus.jpg */; };
 		8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */; };
 		8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */; };
@@ -73,7 +79,14 @@
 		5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTrackerTests.m; sourceTree = "<group>"; };
 		574994251A00AF0400F79F9F /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		574994261A00AF1C00F79F9F /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		5776A9621A303FD700CDC707 /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
+		5776A9631A303FD700CDC707 /* top_charts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_charts@3x.png"; sourceTree = "<group>"; };
+		5776A9661A30FC8700CDC707 /* logo_PNI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_PNI.png; sourceTree = "<group>"; };
 		5778076F1A072C6E00D5FA02 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		57E5EB351A2E5D4E002F31E2 /* StatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusCell.m; path = ../StatusCell.m; sourceTree = "<group>"; };
+		57E5EB371A2E5D68002F31E2 /* StatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatusCell.h; path = ../StatusCell.h; sourceTree = "<group>"; };
+		57E5EB381A2EC155002F31E2 /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = available.png; sourceTree = "<group>"; };
+		57E5EB391A2EC155002F31E2 /* unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unavailable.png; sourceTree = "<group>"; };
 		8E17E7351A27B2DE000F7972 /* Optimus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Optimus.jpg; sourceTree = "<group>"; };
 		8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Google Nexus 7.jpg"; sourceTree = "<group>"; };
 		8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (While).jpg"; sourceTree = "<group>"; };
@@ -122,7 +135,12 @@
 		574993FA1A00AE8600F79F9F /* DeviceTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5776A9661A30FC8700CDC707 /* logo_PNI.png */,
+				57E5EB381A2EC155002F31E2 /* available.png */,
+				57E5EB391A2EC155002F31E2 /* unavailable.png */,
 				8E17E7351A27B2DE000F7972 /* Optimus.jpg */,
+				5776A9621A303FD700CDC707 /* search@3x.png */,
+				5776A9631A303FD700CDC707 /* top_charts@3x.png */,
 				8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */,
 				8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */,
 				8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */,
@@ -139,6 +157,8 @@
 				574994001A00AE8600F79F9F /* AppDelegate.m */,
 				5703AD221A1FBE4A000CACC8 /* StatusViewController.h */,
 				5703AD231A1FBE4A000CACC8 /* StatusViewController.m */,
+				57E5EB371A2E5D68002F31E2 /* StatusCell.h */,
+				57E5EB351A2E5D4E002F31E2 /* StatusCell.m */,
 				574994051A00AE8600F79F9F /* ViewController.h */,
 				574994061A00AE8600F79F9F /* ViewController.m */,
 				436A81F11A0A018B009A04B6 /* Main.storyboard */,
@@ -237,7 +257,6 @@
 				TargetAttributes = {
 					574993F71A00AE8600F79F9F = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 949RQZCTWD;
 					};
 					574994131A00AE8600F79F9F = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -271,13 +290,16 @@
 			files = (
 				5703AD331A1FE661000CACC8 /* iPhone 5 C (Green).jpg in Resources */,
 				5703AD311A1FE661000CACC8 /* iPod Touch 4.jpg in Resources */,
+				5776A9671A30FC8700CDC707 /* logo_PNI.png in Resources */,
 				5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */,
 				8E17E73D1A27B2DE000F7972 /* Galaxy S5 (Navy).jpg in Resources */,
+				57E5EB3B1A2EC155002F31E2 /* unavailable.png in Resources */,
 				5703AD301A1FE661000CACC8 /* iPad Mini (Black).jpg in Resources */,
 				5703AD321A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg in Resources */,
 				577807701A072C6E00D5FA02 /* beep.mp3 in Resources */,
 				5703AD2F1A1FE661000CACC8 /* iPhone 5 (Black).jpg in Resources */,
 				5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */,
+				5776A9641A303FD700CDC707 /* search@3x.png in Resources */,
 				436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */,
 				5703AD2D1A1FE661000CACC8 /* iPhone 5 S (Gold).jpg in Resources */,
 				8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */,
@@ -285,6 +307,8 @@
 				8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */,
 				8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */,
 				8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */,
+				5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */,
+				57E5EB3A1A2EC155002F31E2 /* available.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +329,7 @@
 				574994011A00AE8600F79F9F /* AppDelegate.m in Sources */,
 				574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */,
 				574994071A00AE8600F79F9F /* ViewController.m in Sources */,
+				57E5EB361A2E5D4E002F31E2 /* StatusCell.m in Sources */,
 				574994271A00AF1C00F79F9F /* Device.m in Sources */,
 				5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */,
 				4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */,
@@ -367,8 +392,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: huaxin chen (JXNT4798E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: huaxin chen (JXNT4798E6)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -387,8 +412,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
+				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
@@ -410,8 +436,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: huaxin chen (JXNT4798E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: huaxin chen (JXNT4798E6)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -424,8 +450,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos8.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
+				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
@@ -434,12 +461,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iOS Development: Li Feng (6W3H44PVQ3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Li Feng (6W3H44PVQ3)";
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: huaxin chen (JXNT4798E6)";
 				INFOPLIST_FILE = DeviceTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
 			};
 			name = Debug;
 		};
@@ -447,12 +475,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iOS Development: Li Feng (6W3H44PVQ3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Li Feng (6W3H44PVQ3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: huaxin chen (JXNT4798E6)";
 				INFOPLIST_FILE = DeviceTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
 			};
 			name = Release;
 		};

@@ -17,6 +17,7 @@
 - (instancetype)init
 {
     self = [super init];
+    [self initialize];
     return self;
 }
 
@@ -56,7 +57,8 @@
             }
             
             sqlite3_close(_deviceTrackerDB);
-            return true;
+            
+            return [self insertData];
         } else {
             return false;
         }
@@ -179,6 +181,94 @@
     }
     
     return false;
+}
+
+- (NSMutableArray*)getAvailableDevices{
+    
+    NSMutableArray* devices = [[NSMutableArray alloc] init];
+    
+    const char *dbpath = [_databasePath UTF8String];
+    sqlite3_stmt *statement;
+    
+    //allocate memory for object
+    NSArray* deviceStatus;
+    
+    if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT deviceid, model, user FROM devices WHERE user == \"\""];
+        const char *query_stmt = [querySQL UTF8String];
+        
+        
+        if (sqlite3_prepare_v2(_deviceTrackerDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *deviceIDFiled = [[NSString alloc]
+                                          initWithUTF8String:(const char *)
+                                          sqlite3_column_text(statement, 0)];
+                
+                NSString *modelField = [[NSString alloc]
+                                        initWithUTF8String:(const char *)
+                                        sqlite3_column_text(statement, 1)];
+                NSString *userNameField = [[NSString alloc]
+                                           initWithUTF8String:(const char *)
+                                           sqlite3_column_text(statement, 2)];
+                
+                deviceStatus = [NSArray arrayWithObjects:deviceIDFiled, modelField, userNameField, nil];
+                
+                [devices addObject:deviceStatus];
+                
+            }
+            sqlite3_finalize(statement);
+        }
+        sqlite3_close(_deviceTrackerDB);
+    }
+    return devices;
+}
+- (NSMutableArray*)getUnavailableDevices{
+    NSMutableArray* devices = [[NSMutableArray alloc] init];
+    
+    const char *dbpath = [_databasePath UTF8String];
+    sqlite3_stmt *statement;
+    
+    //allocate memory for object
+    NSArray* deviceStatus;
+    
+    if (sqlite3_open(dbpath, &_deviceTrackerDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:
+                              @"SELECT deviceid, model, user FROM devices WHERE user <> \"\""];
+        const char *query_stmt = [querySQL UTF8String];
+        
+        
+        if (sqlite3_prepare_v2(_deviceTrackerDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSString *deviceIDFiled = [[NSString alloc]
+                                           initWithUTF8String:(const char *)
+                                           sqlite3_column_text(statement, 0)];
+                
+                NSString *modelField = [[NSString alloc]
+                                        initWithUTF8String:(const char *)
+                                        sqlite3_column_text(statement, 1)];
+                NSString *userNameField = [[NSString alloc]
+                                           initWithUTF8String:(const char *)
+                                           sqlite3_column_text(statement, 2)];
+                
+                deviceStatus = [NSArray arrayWithObjects:deviceIDFiled, modelField, userNameField, nil];
+                
+                [devices addObject:deviceStatus];
+                
+            }
+            sqlite3_finalize(statement);
+        }
+        sqlite3_close(_deviceTrackerDB);
+    }
+    return devices;
 }
 
 - (NSString*)testVerify: (NSMutableString*) deviceID{
