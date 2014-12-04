@@ -38,6 +38,7 @@
 		8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */; };
 		8E17E73D1A27B2DE000F7972 /* Galaxy S5 (Navy).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */; };
 		8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */; };
+		8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (While).jpg"; sourceTree = "<group>"; };
 		8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (Navy).jpg"; sourceTree = "<group>"; };
 		8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G-Pad (White).jpg"; sourceTree = "<group>"; };
+		8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PNI_Launch_Logo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		574993FA1A00AE8600F79F9F /* DeviceTracker */ = {
 			isa = PBXGroup;
 			children = (
+				8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */,
 				5776A9661A30FC8700CDC707 /* logo_PNI.png */,
 				57E5EB381A2EC155002F31E2 /* available.png */,
 				57E5EB391A2EC155002F31E2 /* unavailable.png */,
@@ -257,9 +260,11 @@
 				TargetAttributes = {
 					574993F71A00AE8600F79F9F = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 949RQZCTWD;
 					};
 					574994131A00AE8600F79F9F = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 949RQZCTWD;
 						TestTargetID = 574993F71A00AE8600F79F9F;
 					};
 				};
@@ -307,6 +312,7 @@
 				8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */,
 				8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */,
 				8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */,
+				8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */,
 				5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */,
 				57E5EB3A1A2EC155002F31E2 /* available.png in Resources */,
 			);
@@ -463,11 +469,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: huaxin chen (JXNT4798E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DeviceTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -476,11 +482,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: huaxin chen (JXNT4798E6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DeviceTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -488,6 +494,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -499,6 +507,7 @@
 				INFOPLIST_FILE = DeviceTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeviceTracker.app/DeviceTracker";
 			};
 			name = Debug;
@@ -507,6 +516,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -514,6 +525,7 @@
 				INFOPLIST_FILE = DeviceTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeviceTracker.app/DeviceTracker";
 			};
 			name = Release;
