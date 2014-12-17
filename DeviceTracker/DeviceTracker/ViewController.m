@@ -98,9 +98,8 @@
     _userID = nil;
     _deviceID = nil;
     
-    //_lblOutput.text = @"";
     if (_lblStatus.text.length < 1)
-        _lblStatus.text = @"Please scan a device you would like to continue!";
+        _lblStatus.text = @"Please scan a DEVICE or USER QR to continue!";
         
     [self startReading];
 }
