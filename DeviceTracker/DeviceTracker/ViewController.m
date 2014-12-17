@@ -203,7 +203,7 @@
             
             if (_userID) {
                 UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
-                                                                       message:[NSString stringWithFormat:@"Does %@ want to borrow %@", _userID, _deviceID]
+                                                                       message:[NSString stringWithFormat:@"Hi %@! Do you want to borrow %@", _userID, deviceModel]
                                                                       delegate:self
                                                              cancelButtonTitle:@"Cancel"
                                                              otherButtonTitles: nil];
@@ -225,7 +225,7 @@
                 [borrowAlert show];
             }else{
                 UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device : %@ ",deviceID]
-                                                                         message:@"Please scan your ID QR to continue!"
+                                                                         message:@"Please scan your USER QR to continue!"
                                                                         delegate:self
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles: nil];
@@ -285,7 +285,7 @@
     
     if(_deviceID){
         UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
-                                                               message:[NSString stringWithFormat:@"Does %@ want to borrow %@", _userID, _deviceID]
+                                                               message:[NSString stringWithFormat:@"Hi %@! Do you want to borrow %@", _userID, deviceModel]
                                                               delegate:self
                                                      cancelButtonTitle:@"Cancel"
                                                      otherButtonTitles: nil];
@@ -308,7 +308,7 @@
     }
     else{
         UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User : %@ ",_userID]
-                                                                 message:@"Please scan your Device to continue!"
+                                                                 message:@"Please scan your DEVICE QR to continue!"
                                                                 delegate:self
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles: nil];
@@ -335,12 +335,12 @@
         }
         else if(alertView.tag == scanUserAlertView){
             NSLog(@"User is going to scan ID next");
-            self.lblStatus.text = @"Please scan your ID to continue checkout!";
+            self.lblStatus.text = @"Please scan your USER QR to continue checkout!";
             [self startReading];
         }
         else if(alertView.tag == scanDeviceAlertView){
             NSLog(@"User is going to scan device next");
-            self.lblStatus.text = @"Please scan the device you would like to borrow!";
+            self.lblStatus.text = @"Please scan the DEVICE QR you would like to borrow!";
             [self startReading];
         }
         else if(alertView.tag == deviceNotFoundAlertView){

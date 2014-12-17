@@ -38,6 +38,7 @@
 		8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */; };
 		8E17E73D1A27B2DE000F7972 /* Galaxy S5 (Navy).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */; };
 		8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */; };
+		8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */; };
 		8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (While).jpg"; sourceTree = "<group>"; };
 		8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (Navy).jpg"; sourceTree = "<group>"; };
 		8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G-Pad (White).jpg"; sourceTree = "<group>"; };
+		8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PNI_Launch_Logo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 				574994021A00AE8600F79F9F /* DeviceTracker.xcdatamodeld */,
 				5749940D1A00AE8600F79F9F /* LaunchScreen.xib */,
 				5778076F1A072C6E00D5FA02 /* beep.mp3 */,
+				8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */,
 				574993FB1A00AE8600F79F9F /* Supporting Files */,
 			);
 			path = DeviceTracker;
@@ -311,6 +314,7 @@
 				5703AD2E1A1FE661000CACC8 /* iPad Mini (White).jpg in Resources */,
 				8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */,
 				8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */,
+				8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */,
 				8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */,
 				8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */,
 				5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */,
@@ -467,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -481,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DeviceTracker/Info.plist;
