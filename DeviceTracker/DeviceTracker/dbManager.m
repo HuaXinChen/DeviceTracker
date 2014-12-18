@@ -153,20 +153,21 @@
     {
         NSString *combinedSQL = [NSString stringWithFormat:
                                  @"INSERT INTO DEVICES ( deviceid , model, made, os, screensize, user, checkouttime) VALUES "
-                                 "(\"PNI-QA-MTD-006\", \"iPhone 5 (Black)\",       \"Apple\",   \"iOS 8.0\",       \"4 inch\",   \"Eddie\",  \"now\"),"
-                                 "(\"PNI-QA-MTD-001\", \"iPhone 5 (Black)\",       \"Apple\",   \"iOS 7.1\",       \"4 inch\",   \"Eddie\",  \"now\"),"
+                                 "(\"PNI-QA-MTD-006\", \"iPhone 5 (Black)\",       \"Apple\",   \"iOS 8.0\",       \"4 inch\",   \"Aaron\",  \"now\"),"
+                                 "(\"PNI-QA-MTD-001\", \"iPhone 5 (Black)\",       \"Apple\",   \"iOS 7.1\",       \"4 inch\",   \"Aaron\",  \"now\"),"
                                  "(\"PNI-QA-MTD-027\", \"iPhone 5 S (Gold)\",      \"Apple\",   \"iOS 8.0\" ,      \"4 inch\",   \"Victor\", \"now\"),"
                                  "(\"PNI-QA-MTD-035\", \"iPhone 5 C (Green)\",     \"Apple\",   \"iOS 7.1.2\",     \"4 inch\",   \"Arthur\", \"now\"),"
                                  "(\"PNI-QA-MTD-037\", \"iPhone 6 (Space Gray)\",  \"Apple\",   \"iOS 8.0.2\",     \"4.7 inch\", \"Eddie\",  \"now\"),"
                                  "(\"PNI-QA-MTD-003\", \"iPod Touch 4\",           \"Apple\",   \"iOS 6.1.6\",     \"3.5 inch\", \"Ted\",    \"now\"),"
-                                 "(\"PNI-QA-MTD-032\", \"iPad Mini (White)\",      \"Apple\",   \"iOS 8.0\",       \"7.9 inch\", \"Eddie\",  \"now\"),"
-                                 "(\"PNI-QA-MTD-025\", \"iPad Mini (Black)\",      \"Apple\",   \"iOS 7.1.2\",     \"7.9 inch\", \"Eddie\",  \"now\"),"
-                                 "(\"PNI-QA-MTD-030\", \"Galaxy S5 (Navy)\",       \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"WES\",    \"now\"),"
-                                 "(\"PNI-QA-MTD-033\", \"Galaxy S5 (While)\",      \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"XYZ\",    \"now\"),"
-                                 "(\"PNI-QA-MTD-034\", \"Galaxy S5 (While)\",      \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"ABC\",    \"now\"),"
-                                 "(\"PNI-QA-MTD-013\", \"Optimus\",                \"LG\",      \"Android 4.4.4\", \"7 inch\",   \"DDD\",    \"now\"),"
-                                 "(\"PNI-QA-MTD-009\", \"Google Nexus 7\",         \"ASUS\",    \"Android 4.4.4\", \"7 inch\",   \"EEE\",    \"now\"),"
-                                 "(\"PNI-QA-MTD-031\", \"G-Pad (White)\",          \"LG\",      \"Android 4.4.4\", \"8.3 inch\", \"GGG\",    \"now\")"
+                                 "(\"PNI-QA-MTD-032\", \"iPad Mini (White)\",      \"Apple\",   \"iOS 8.0\",       \"7.9 inch\", \"\",  \"now\"),"
+                                 "(\"PNI-QA-MTD-025\", \"iPad Mini (Black)\",      \"Apple\",   \"iOS 7.1.2\",     \"7.9 inch\", \"Daniel\",  \"now\"),"
+                                 "(\"PNI-QA-MTD-030\", \"Galaxy S5 (Navy)\",       \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"Aaron\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-033\", \"Galaxy S5 (White)\",      \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"Alan\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-034\", \"Galaxy S5 (White)\",      \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"Chris\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-013\", \"Optimus\",                \"LG\",      \"Android 4.4.4\", \"7 inch\",   \"Kyle\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-009\", \"Google Nexus 7\",         \"ASUS\",    \"Android 4.4.4\", \"7 inch\",   \"Cindy\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-031\", \"G-Pad (White)\",          \"LG\",      \"Android 4.4.4\", \"8.3 inch\", \"Arthur\",    \"now\"),"
+                                 "(\"PNI-QA-MTD-007\", \"Galaxy S5 (White)\",      \"Samsung\", \"Android 4.4.2\", \"5.1 inch\", \"\",    \"now\")"
                                  ";"];
         
         const char *insert_stmt1 = [combinedSQL UTF8String];

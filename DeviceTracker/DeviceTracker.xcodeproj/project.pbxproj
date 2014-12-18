@@ -35,7 +35,7 @@
 		57E5EB3B1A2EC155002F31E2 /* unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 57E5EB391A2EC155002F31E2 /* unavailable.png */; };
 		8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7351A27B2DE000F7972 /* Optimus.jpg */; };
 		8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */; };
-		8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */; };
+		8E17E73C1A27B2DE000F7972 /* Galaxy S5 (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7371A27B2DE000F7972 /* Galaxy S5 (White).jpg */; };
 		8E17E73D1A27B2DE000F7972 /* Galaxy S5 (Navy).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */; };
 		8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */; };
 		8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */; };
@@ -91,7 +91,7 @@
 		57E5EB391A2EC155002F31E2 /* unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unavailable.png; sourceTree = "<group>"; };
 		8E17E7351A27B2DE000F7972 /* Optimus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Optimus.jpg; sourceTree = "<group>"; };
 		8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Google Nexus 7.jpg"; sourceTree = "<group>"; };
-		8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (While).jpg"; sourceTree = "<group>"; };
+		8E17E7371A27B2DE000F7972 /* Galaxy S5 (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (White).jpg"; sourceTree = "<group>"; };
 		8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (Navy).jpg"; sourceTree = "<group>"; };
 		8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G-Pad (White).jpg"; sourceTree = "<group>"; };
 		8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 				5776A9621A303FD700CDC707 /* search@3x.png */,
 				5776A9631A303FD700CDC707 /* top_charts@3x.png */,
 				8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */,
-				8E17E7371A27B2DE000F7972 /* Galaxy S5 (While).jpg */,
+				8E17E7371A27B2DE000F7972 /* Galaxy S5 (White).jpg */,
 				8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */,
 				8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */,
 				5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */,
@@ -313,7 +313,7 @@
 				8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */,
 				5703AD2E1A1FE661000CACC8 /* iPad Mini (White).jpg in Resources */,
 				8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */,
-				8E17E73C1A27B2DE000F7972 /* Galaxy S5 (While).jpg in Resources */,
+				8E17E73C1A27B2DE000F7972 /* Galaxy S5 (White).jpg in Resources */,
 				8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */,
 				8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */,
 				8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */,
