@@ -99,7 +99,7 @@
     _deviceID = nil;
     
     if (_lblStatus.text.length < 1)
-        _lblStatus.text = @"Please scan a DEVICE or USER QR to continue!";
+        _lblStatus.text = @"Scan DEVICE or USER QR";
         
     [self startReading];
 }
@@ -201,8 +201,8 @@
             NSLog(@"Device : %@ available", deviceID);
             
             if (_userID) {
-                UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
-                                                                       message:[NSString stringWithFormat:@"Hi %@! Do you want to borrow %@", _userID, deviceModel]
+                UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@", _userID]
+                                                                       message:[NSString stringWithFormat:@"Borrow %@?", deviceModel]
                                                                       delegate:self
                                                              cancelButtonTitle:@"Cancel"
                                                              otherButtonTitles: nil];
@@ -223,8 +223,8 @@
                 [borrowAlert setTag:borrowAlertView];
                 [borrowAlert show];
             }else{
-                UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device : %@ ",deviceID]
-                                                                         message:@"Please scan your USER QR to continue!"
+                UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",deviceID]
+                                                                         message:@"Scan USER QR"
                                                                         delegate:self
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles: nil];
@@ -232,8 +232,8 @@
                 [scanUserAlert show];
             }
         }else{
-            UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:@"Return Device?"
-                                                                   message:[NSString stringWithFormat:@"Do you want to return %@",deviceModel]
+            UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@", deviceID]
+                                                                   message:[NSString stringWithFormat:@"Return %@?",deviceModel]
                                                                   delegate:self
                                                          cancelButtonTitle:@"Cancel"
                                                          otherButtonTitles: nil];
@@ -259,8 +259,8 @@
     }else{
         NSLog(@"Device : %@ not found in DB", deviceID);
         
-        UIAlertView * deviceNotFoundAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device : %@ ",deviceID]
-                                                                 message:@"Device not Found in DB, please try again!"
+        UIAlertView * deviceNotFoundAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",deviceID]
+                                                                 message:@"Device not found"
                                                                 delegate:self
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles: nil];
@@ -283,8 +283,8 @@
     _userID = [[userID mutableCopy] componentsSeparatedByString:@"-"][3];
     
     if(_deviceID){
-        UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Borrow Devices?"]
-                                                               message:[NSString stringWithFormat:@"Hi %@! Do you want to borrow %@", _userID, deviceModel]
+        UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@", _userID]
+                                                               message:[NSString stringWithFormat:@"Borrow %@?", deviceModel]
                                                               delegate:self
                                                      cancelButtonTitle:@"Cancel"
                                                      otherButtonTitles: nil];
@@ -306,8 +306,8 @@
         [borrowAlert show];
     }
     else{
-        UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User : %@ ",_userID]
-                                                                 message:@"Please scan your DEVICE QR to continue!"
+        UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userID]
+                                                                 message:@"Scan DEVICE QR!"
                                                                 delegate:self
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles: nil];
@@ -334,12 +334,12 @@
         }
         else if(alertView.tag == scanUserAlertView){
             NSLog(@"User is going to scan ID next");
-            self.lblStatus.text = @"Please scan your USER QR to continue checkout!";
+            self.lblStatus.text = @"Scan USER QR!";
             [self startReading];
         }
         else if(alertView.tag == scanDeviceAlertView){
             NSLog(@"User is going to scan device next");
-            self.lblStatus.text = @"Please scan the DEVICE QR you would like to borrow!";
+            self.lblStatus.text = @"Scan DEVICE QR!";
             [self startReading];
         }
         else if(alertView.tag == deviceNotFoundAlertView){
