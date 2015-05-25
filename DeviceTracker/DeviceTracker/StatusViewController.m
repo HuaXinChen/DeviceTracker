@@ -10,6 +10,7 @@
 #import "StatusCell.h"
 #import "Device.h"
 #import "dbManager.h"
+#import <Parse/Parse.h>
 
 @implementation StatusViewController
 
@@ -26,6 +27,13 @@ NSArray *unAvaliableDevices;
     self.extendedLayoutIncludesOpaqueBars=NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    
+    /////////////////////////////////
+    //Parse
+    /////////////////////////////////
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

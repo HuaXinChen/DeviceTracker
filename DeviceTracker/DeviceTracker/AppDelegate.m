@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <Parse/Parse.h>
+
 @interface AppDelegate ()
 
 @end
@@ -16,6 +18,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //////////////////////////////////
+    //Parse
+    //////////////////////////////////
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"EIpND6CzdgXRq1MvORSD53SZLjjeVyLMUWQXWAAO"
+                  clientKey:@"qDmppXuW3bMUrYT2kTkudz48qJMKhK89B7ycMTbz"];
+    
     // Override point for customization after application launch.
     
     // Assign tab bar item with titles
