@@ -348,7 +348,6 @@
         }
         else if(alertView.tag == deviceNotFoundAlertView){
             NSLog(@"User is going to start again");
-            
             [self reset];
         }
     }
@@ -413,7 +412,7 @@
                 
                 if([[metadataObj stringValue] containsString:@"MTD"]){
                     _isReading= NO;
-                    [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
+                    //[_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
                     
                     NSLog(@"MTD Scanned");
                     
@@ -422,7 +421,7 @@
                 }else if([[metadataObj stringValue] containsString:@"USR"]){
                     
                     _isReading= NO;
-                    [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
+                    //[_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
                     
                     NSLog(@"USR Scanned");
                     
