@@ -3,7 +3,7 @@
 //  DeviceTracker
 //
 //  Created by Victor Chen on 2014-10-28.
-//  Copyright (c) 2014 PNI. All rights reserved.
+//  Copyright (c) 2015 PNI. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -14,8 +14,9 @@
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic) BOOL isReading;
 @property (nonatomic, strong) NSMutableString* deviceID;
-@property (nonatomic, strong) NSMutableString* userID;
-@property (nonatomic, strong) dbManager *dbManager;
+@property (nonatomic, strong) NSMutableString* deviceObjectID;
+@property (nonatomic, strong) NSMutableString* userName;
+@property (nonatomic, strong) NSMutableString* userObjectID;
 
 #define returnAlertView 1
 #define borrowAlertView 2
@@ -40,18 +41,12 @@
     _captureSession = nil;
     
     _deviceID = [[NSMutableString alloc] init];
+    _deviceObjectID =[[NSMutableString alloc] init];
+    _userName = [[NSMutableString alloc] init];
+    _deviceObjectID = [[NSMutableString alloc] init];
 
     // Begin loading the sound effect so to have it ready for playback when it's needed.
     [self loadBeepSound];
-    
-    
-    //initialize db
-    self.dbManager = [[dbManager alloc] init];
-
-    // Initilize table when program starts
-    if (![self.dbManager initialize])
-        _lblStatus.text = @"Failed to create table";
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -74,29 +69,14 @@
 #pragma mark - IBAction method implementation
 
 
-- (IBAction)scanPressed:(id)sender {
-    _lblStatus.text = @"test scan pressed";
-}
-
-- (IBAction)insertPressed:(id)sender {
-    if ([self.dbManager insertData])
-        _lblOutput.text = @"Data added";
-    else
-        _lblOutput.text = @"Failed to add data";
-   }
-
-- (IBAction)statusPressed:(id)sender {
-    _lblStatus.text = @"test status pressed";
-}
-
-
-
 #pragma mark - Private method implementation
 
 -(void)reset{
     
-    _userID = nil;
+    _userName = nil;
+    _userObjectID = nil;
     _deviceID = nil;
+    _deviceObjectID = nil;
     
     if (_lblStatus.text.length < 1)
         _lblStatus.text = @"Scan DEVICE or USER QR";
@@ -181,33 +161,135 @@
     }
 }
 
--(void)scannedDevice:(NSString*) deviceID{
-    NSLog(@"Device : %@ scanned.", deviceID);
+-(void)scannedDevice:(NSString*) deviceObjectID{
+    NSLog(@"Device : %@ scanned.", deviceObjectID);
     
-    //Check if device could be found in DB
-    if ([self.dbManager isDeviceFoundInDB:deviceID]) {
+    //set deviceObjectID to global variable
+    _deviceObjectID= deviceObjectID;
+    
+    PFQuery *deviceQuery = [PFQuery queryWithClassName:@"Devices"];
+    
+    //get device object from cloud
+    [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
+        NSLog(@"%@", device);
         
-        _deviceID =[deviceID mutableCopy];
+        //extract device id, user and model from device object
+        _deviceID = device[@"deviceid"];
+        NSString *deviceUser = device[@"user"];
+        NSString *deviceModel = device[@"model"];
         
-        _lblOutput.text = [NSString stringWithFormat:@"%@", _deviceID];
-        
-        //store information for device status
-        NSArray* deviceStatus = [self.dbManager getDeviceStatus:deviceID];
-        NSString* deviceModel = (NSString*)deviceStatus[0];
-        
-        
-        if ([Device isDeviceAvailable:deviceStatus]) {
+        //device is not in DB, display error message
+        if(_deviceID == NULL){
+            NSLog(@"Device : %@ not found in DB", _deviceID);
             
-            NSLog(@"Device : %@ available", deviceID);
-            
-            if (_userID) {
-                UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@", _userID]
+            UIAlertView * deviceNotFoundAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",_deviceID]
+                                                                           message:@"Device not found"
+                                                                          delegate:self
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles: nil];
+            [deviceNotFoundAlert setTag:deviceNotFoundAlertView];
+            [deviceNotFoundAlert show];
+        }
+        
+        //device is found in DB, process checkin OR checkout
+        else{
+            //device is availabe
+            if ([deviceUser isEqual: @""]){
+                NSLog(@"Device : %@ available", _deviceID);
+                
+                //if user QR is scanned, trigger checkout
+                if (_userName) {
+                    UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@", _userName]
+                                                                           message:[NSString stringWithFormat:@"Borrow %@?", deviceModel]
+                                                                          delegate:self
+                                                                 cancelButtonTitle:@"Cancel"
+                                                                 otherButtonTitles: nil];
+                    
+                    //set image view size
+                    UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
+                    //load image
+                    UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+                    //set image to imageView keep the ratio
+                    [deviceImageView setImage:deviceImage];
+                    deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
+                    //insert image view to the pop up
+                    [borrowAlert setValue:deviceImageView forKey:@"accessoryView"];
+                    [borrowAlert addButtonWithTitle:@"Borrow"];
+                    [borrowAlert setTag:borrowAlertView];
+                    [borrowAlert show];
+                }
+                
+                //if user QR is not scanned, show message
+                else{
+                    UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",_deviceID]
+                                                                             message:@"Scan USER QR"
+                                                                            delegate:self
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles: nil];
+                    [scanUserAlert setTag:scanUserAlertView];
+                    [scanUserAlert show];
+                }
+            }
+            //device is not availabe, trigger checkin
+            else{
+                UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@", _deviceID]
+                                                                       message:[NSString stringWithFormat:@"Return %@?",deviceModel]
+                                                                      delegate:self
+                                                             cancelButtonTitle:@"Cancel"
+                                                             otherButtonTitles: nil];
+                
+                //set image view size
+                UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
+                //load image
+                UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+                //set image to imageView and keep the ratio
+                [deviceImageView setImage:deviceImage];
+                deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
+                
+                //insert image view to the pop up
+                [returnAlert setValue:deviceImageView forKey:@"accessoryView"];
+                
+                //add options and show Alert
+                [returnAlert addButtonWithTitle:@"Return"];
+                [returnAlert setTag:returnAlertView];
+                [returnAlert show];
+                
+            }
+        }
+    }];
+    //add spinner
+}
+
+-(void)scannedUser:(NSString*) userObjectID{
+    NSLog(@"User : %@ scanned.", userObjectID);
+    
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"Users"];
+    
+    //get user object from cloud
+    
+    [userQuery getObjectInBackgroundWithId:userObjectID block:^(PFObject *user, NSError *error) {
+        NSLog(@"%@", user);
+        //extract user name, and set it to global variable
+        _userName = user[@"username"];
+        
+        //if device QR is already scanned, trigger checkout
+        if(_deviceObjectID){
+            //get device object
+            PFQuery *deviceQuery = [PFQuery queryWithClassName:@"Devices"];
+            [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
+                NSLog(@"%@", device);
+                
+                //extract device id and model
+                _deviceID = device[@"deviceid"];
+                NSString *deviceModel = device[@"model"];
+                
+                //pop up for confirmation
+                UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@", _userName]
                                                                        message:[NSString stringWithFormat:@"Borrow %@?", deviceModel]
                                                                       delegate:self
                                                              cancelButtonTitle:@"Cancel"
                                                              otherButtonTitles: nil];
                 
-                //add image to pop up for iOS 7+
                 //set image view size
                 UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
                 //load image
@@ -218,103 +300,25 @@
                 deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
                 //insert image view to the pop up
                 [borrowAlert setValue:deviceImageView forKey:@"accessoryView"];
-                
                 [borrowAlert addButtonWithTitle:@"Borrow"];
                 [borrowAlert setTag:borrowAlertView];
                 [borrowAlert show];
-            }else{
-                UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",deviceID]
-                                                                         message:@"Scan USER QR"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"OK"
-                                                               otherButtonTitles: nil];
-                [scanUserAlert setTag:scanUserAlertView];
-                [scanUserAlert show];
-            }
-        }else{
-            UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@", deviceID]
-                                                                   message:[NSString stringWithFormat:@"Return %@?",deviceModel]
-                                                                  delegate:self
-                                                         cancelButtonTitle:@"Cancel"
-                                                         otherButtonTitles: nil];
-            
-            //add image to pop up for iOS 7+
-            //set image view size
-            UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
-            //load image
-            UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
-            //set image to imageView and keep the ratio
-            [deviceImageView setImage:deviceImage];
-            deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-            //insert image view to the pop up
-            [returnAlert setValue:deviceImageView forKey:@"accessoryView"];
-            
-            //add options and show Alert
-            [returnAlert addButtonWithTitle:@"Return"];
-            [returnAlert setTag:returnAlertView];
-            [returnAlert show];
+            }];
         }
         
-    }else{
-        NSLog(@"Device : %@ not found in DB", deviceID);
-        
-        UIAlertView * deviceNotFoundAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",deviceID]
-                                                                 message:@"Device not found"
-                                                                delegate:self
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles: nil];
-        [deviceNotFoundAlert setTag:deviceNotFoundAlertView];
-        [deviceNotFoundAlert show];
-    }
-}
+        //if Device QR is not scanned, display message
+        else{
+            UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userName]
+                                                                       message:@"Scan DEVICE QR!"
+                                                                      delegate:self
+                                                             cancelButtonTitle:@"OK"
+                                                             otherButtonTitles: nil];
+            [scanDeviceAlert setTag:scanDeviceAlertView];
+            [scanDeviceAlert show];
+        }
 
--(void)scannedUser:(NSString*) userID{
-    NSLog(@"User : %@ scanned.", userID);
+    }];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(220, 10, 40, 40)];
-    [imageView setImage:[UIImage imageNamed:@"QR_Icon.png"]];
-
-    //store information for device status
-    NSArray* deviceStatus = [self.dbManager getDeviceStatus:self.deviceID];
-    NSString* deviceModel = (NSString*)deviceStatus[0];
-    
-    //TODO: Check if ID is valid
-    _userID = [[userID mutableCopy] componentsSeparatedByString:@"-"][3];
-    
-    if(_deviceID){
-        UIAlertView * borrowAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@", _userID]
-                                                               message:[NSString stringWithFormat:@"Borrow %@?", deviceModel]
-                                                              delegate:self
-                                                     cancelButtonTitle:@"Cancel"
-                                                     otherButtonTitles: nil];
-        
-        //add image to pop up for iOS 7+
-        //set image view size
-        UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
-        //load image
-        UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
-        
-        //set image to imageView keep the ratio
-        [deviceImageView setImage:deviceImage];
-        deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
-        //insert image view to the pop up
-        [borrowAlert setValue:deviceImageView forKey:@"accessoryView"];
-        
-        [borrowAlert addButtonWithTitle:@"Borrow"];
-        [borrowAlert setTag:borrowAlertView];
-        [borrowAlert show];
-    }
-    else{
-        UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userID]
-                                                                 message:@"Scan DEVICE QR!"
-                                                                delegate:self
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles: nil];
-        [scanDeviceAlert setTag:scanDeviceAlertView];
-        [scanDeviceAlert show];
-
-    }
 }
 
 #pragma mark - UIAlertViewDelegate method implementation
@@ -350,25 +354,45 @@
     }
     else if(buttonIndex == 1)
     {
+        PFQuery *deviceQuery = [PFQuery queryWithClassName:@"Devices"];
         if(alertView.tag == returnAlertView){
             NSLog(@"User would like to return");
             
-            if ([self.dbManager returnDevice:self.deviceID])
-                self.lblStatus.text = @"Checkin completed!";
-            else
-                self.lblStatus.text = @"Device cannot be returned at this moment, please try again";
-            
-            [self reset];
+            //update to cloud, clear the user cell for returned device
+            [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
+                device[@"user"] = @"";
+                
+                [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"%@",device);
+                        self.lblStatus.text = @"Checkin completed!";
+                    } else {
+                        NSLog(@"%@",error);
+                        self.lblStatus.text = @"Device cannot be returned at this moment, please try again";
+                    }
+                }];
+                [self reset];
+            }];
         }
+        
         else if(alertView.tag == borrowAlertView){
             NSLog(@"User would like to borrow");
             
-            if ([self.dbManager borrowDevice:self.deviceID asUserName:self.userID])
-                self.lblStatus.text = @"Checkout completed!";
-            else
-                self.lblStatus.text = @"Device cannot be checked out at this moment, please try again";
-            
-            [self reset];
+            //update to cloud, update device user cell with borrower's username
+            [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
+               device[@"user"] = _userName;
+                
+               [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                   if (succeeded) {
+                       NSLog(@"%@",device);
+                       self.lblStatus.text = @"Checkout completed!";
+                   } else {
+                       NSLog(@"%@",error);
+                       self.lblStatus.text = @"Device cannot be borrowed at this moment, please try again";
+                   }
+                }];
+                [self reset];
+            }];
         }
     }
 }
@@ -387,31 +411,29 @@
                 // stop reading and change the bar button item's title and the flag's value.
                 // Everything is done on the main thread.
                 
-                if ([[metadataObj stringValue] containsString:@"PNI"]) {
-                    
+                if([[metadataObj stringValue] containsString:@"MTD"]){
                     _isReading= NO;
-                    
                     [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
                     
-                    if([[metadataObj stringValue] containsString:@"MTD"]){
-                        
-                        NSLog(@"MTD Scanned");
-                        
-                        [self scannedDevice:[metadataObj stringValue]];
-                        
-                    }else if([[metadataObj stringValue] containsString:@"USR"]){
-                        
-                        NSLog(@"USR Scanned");
-                        
-                        [self scannedUser:[metadataObj stringValue]];
-                    }
+                    NSLog(@"MTD Scanned");
                     
-                    [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                    [self scannedDevice: [[metadataObj stringValue] substringWithRange:NSMakeRange(3, 10)]];
                     
-                    // If the audio player is not nil, then play the sound effect.
-                    if (_audioPlayer) {
-                        [_audioPlayer play];
-                    }
+                }else if([[metadataObj stringValue] containsString:@"USR"]){
+                    
+                    _isReading= NO;
+                    [_lblStatus performSelectorOnMainThread:@selector(setText:) withObject:[metadataObj stringValue] waitUntilDone:NO];
+                    
+                    NSLog(@"USR Scanned");
+                    
+                    [self scannedUser:[[metadataObj stringValue] substringWithRange:NSMakeRange(3, 10)]];
+                }
+                
+                [self performSelectorOnMainThread:@selector(stopReading) withObject:nil waitUntilDone:NO];
+                
+                // If the audio player is not nil, then play the sound effect.
+                if (_audioPlayer) {
+                    [_audioPlayer play];
                 }
             }
         }
@@ -419,5 +441,4 @@
 }
 
 - (BOOL)shouldAutorotate { return NO; }
-
 @end

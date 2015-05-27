@@ -3,13 +3,11 @@
 //  DeviceTracker
 //
 //  Created by Victor Chen on 2014-11-21.
-//  Copyright (c) 2014 PNI. All rights reserved.
+//  Copyright (c) 2015 PNI. All rights reserved.
 //
 
 #import "StatusViewController.h"
 #import "StatusCell.h"
-#import "Device.h"
-#import "dbManager.h"
 #import <Parse/Parse.h>
 
 @implementation StatusViewController
@@ -37,15 +35,7 @@ NSArray *unAvaliableDevices;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    
-    dbManager *db = [[dbManager alloc] init];
-    
-    avaliableDevices = [db getAvailableDevices];
-    
-    unAvaliableDevices = [db getUnavailableDevices];
-    
     [self.tableView reloadData];
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
