@@ -174,7 +174,7 @@
         NSLog(@"%@", device);
         
         //extract device id, user and model from device object
-        _deviceID = device[@"deviceid"];
+        _deviceID = device[@"deviceId"];
         NSString *deviceUser = device[@"user"];
         NSString *deviceModel = device[@"model"];
         
@@ -270,7 +270,7 @@
     [userQuery getObjectInBackgroundWithId:userObjectID block:^(PFObject *user, NSError *error) {
         NSLog(@"%@", user);
         //extract user name, and set it to global variable
-        _userName = user[@"username"];
+        _userName = user[@"userName"];
         
         //if device QR is already scanned, trigger checkout
         if(_deviceObjectID){
@@ -280,7 +280,7 @@
                 NSLog(@"%@", device);
                 
                 //extract device id and model
-                _deviceID = device[@"deviceid"];
+                _deviceID = device[@"deviceId"];
                 NSString *deviceModel = device[@"model"];
                 
                 //pop up for confirmation
@@ -359,6 +359,7 @@
             
             //update to cloud, clear the user cell for returned device
             [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
+                NSString *deviceUser = device[@"user"];
                 device[@"user"] = @"";
                 
                 [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -370,6 +371,15 @@
                         self.lblStatus.text = @"Device cannot be returned at this moment, please try again";
                     }
                 }];
+                
+                //log the transaction
+                PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
+                transaction[@"deviceId"] = device[@"deviceId"];
+                transaction[@"model"] = device[@"model"];
+                transaction[@"user"] = deviceUser;
+                transaction[@"action"] = @"return";
+                [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
+                
                 [self reset];
             }];
         }
@@ -379,17 +389,26 @@
             
             //update to cloud, update device user cell with borrower's username
             [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
-               device[@"user"] = _userName;
-                
-               [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                   if (succeeded) {
+                device[@"user"] = _userName;
+
+                [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
                        NSLog(@"%@",device);
                        self.lblStatus.text = @"Checkout completed!";
-                   } else {
+                    } else {
                        NSLog(@"%@",error);
                        self.lblStatus.text = @"Device cannot be borrowed at this moment, please try again";
-                   }
+                    }
                 }];
+                
+                //log the transaction
+                PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
+                transaction[@"deviceId"] = device[@"deviceId"];
+                transaction[@"model"] = device[@"model"];
+                transaction[@"user"] = _userName;
+                transaction[@"action"] = @"borrow";
+                [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
+
                 [self reset];
             }];
         }
