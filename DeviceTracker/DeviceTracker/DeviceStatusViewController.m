@@ -10,6 +10,11 @@
 
 @implementation DeviceStatusViewController
 
+- (void) viewWillAppear:(BOOL)animated {
+    
+    [self loadObjects];
+    
+}
 
 - (id)initWithCoder:(NSCoder *)aCoder
 {
