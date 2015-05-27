@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4317B7F31A0DF9EE00746295 /* dbManager.m */; };
 		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
 		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
 		5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703AD231A1FBE4A000CACC8 /* StatusViewController.m */; };
@@ -25,7 +24,6 @@
 		5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5749940B1A00AE8600F79F9F /* Images.xcassets */; };
 		5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5749940D1A00AE8600F79F9F /* LaunchScreen.xib */; };
 		5749941B1A00AE8600F79F9F /* DeviceTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */; };
-		574994271A00AF1C00F79F9F /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994261A00AF1C00F79F9F /* Device.m */; };
 		5776A9641A303FD700CDC707 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9621A303FD700CDC707 /* search@3x.png */; };
 		5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9631A303FD700CDC707 /* top_charts@3x.png */; };
 		5776A9671A30FC8700CDC707 /* logo_PNI.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9661A30FC8700CDC707 /* logo_PNI.png */; };
@@ -65,8 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4317B7F21A0DF9AD00746295 /* dbManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dbManager.h; sourceTree = "<group>"; };
-		4317B7F31A0DF9EE00746295 /* dbManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dbManager.m; sourceTree = "<group>"; };
 		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5703AD221A1FBE4A000CACC8 /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
@@ -91,8 +87,6 @@
 		574994141A00AE8600F79F9F /* DeviceTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeviceTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		574994191A00AE8600F79F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5749941A1A00AE8600F79F9F /* DeviceTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceTrackerTests.m; sourceTree = "<group>"; };
-		574994251A00AF0400F79F9F /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		574994261A00AF1C00F79F9F /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		5776A9621A303FD700CDC707 /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		5776A9631A303FD700CDC707 /* top_charts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_charts@3x.png"; sourceTree = "<group>"; };
 		5776A9661A30FC8700CDC707 /* logo_PNI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_PNI.png; sourceTree = "<group>"; };
@@ -194,7 +188,6 @@
 				5703AD2A1A1FE661000CACC8 /* iPod Touch 4.jpg */,
 				5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */,
 				5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */,
-				574994241A00AED000F79F9F /* Model */,
 				574993FF1A00AE8600F79F9F /* AppDelegate.h */,
 				574994001A00AE8600F79F9F /* AppDelegate.m */,
 				5703AD221A1FBE4A000CACC8 /* StatusViewController.h */,
@@ -238,17 +231,6 @@
 				574994191A00AE8600F79F9F /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		574994241A00AED000F79F9F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				574994251A00AF0400F79F9F /* Device.h */,
-				574994261A00AF1C00F79F9F /* Device.m */,
-				4317B7F21A0DF9AD00746295 /* dbManager.h */,
-				4317B7F31A0DF9EE00746295 /* dbManager.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		6EC8F4461B13C9A300C7CAF6 /* Frameworks */ = {
@@ -396,9 +378,7 @@
 				574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */,
 				574994071A00AE8600F79F9F /* ViewController.m in Sources */,
 				57E5EB361A2E5D4E002F31E2 /* StatusCell.m in Sources */,
-				574994271A00AF1C00F79F9F /* Device.m in Sources */,
 				5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */,
-				4317B7F41A0DF9EE00746295 /* dbManager.m in Sources */,
 				574993FE1A00AE8600F79F9F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
+				PROVISIONING_PROFILE = "226c8338-d674-49cd-8af7-b9c849085633";
 				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = NO;
 			};
@@ -517,7 +497,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "a5f6d998-d372-42a6-841f-508faeda7ae9";
+				PROVISIONING_PROFILE = "226c8338-d674-49cd-8af7-b9c849085633";
 				SDKROOT = iphoneos8.1;
 				VALIDATE_PRODUCT = NO;
 			};
