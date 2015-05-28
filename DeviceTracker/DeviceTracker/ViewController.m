@@ -322,7 +322,7 @@
         }
         
         //if Device QR is not scanned, display message
-        else{
+        else if(!_deviceObjectID){
             UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userName]
                                                                        message:@"Scan DEVICE QR!"
                                                                       delegate:self
