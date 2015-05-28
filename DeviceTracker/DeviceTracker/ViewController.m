@@ -23,6 +23,7 @@
 #define scanUserAlertView 3
 #define scanDeviceAlertView 4
 #define deviceNotFoundAlertView 5
+#define reachMaxNumberOfDeviceBorrowed 6
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -265,15 +266,29 @@
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"Users"];
     
-    //get user object from cloud
+    //set the objectID to global value
+    _userObjectID = userObjectID;
     
+    //get user object from cloud
     [userQuery getObjectInBackgroundWithId:userObjectID block:^(PFObject *user, NSError *error) {
         NSLog(@"%@", user);
         //extract user name, and set it to global variable
         _userName = user[@"userName"];
+        NSNumber *numberOfDeviceBorrowed = user[@"numberOfDeviceBorrowed"];
+        
+        //if the user has already borrowed 2 or more devices
+        if ( [numberOfDeviceBorrowed intValue] >= 2) {
+            UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userName]
+                                                                       message:@"Cannot check out more than 2 devices!"
+                                                                      delegate:self
+                                                             cancelButtonTitle:@"OK"
+                                                             otherButtonTitles: nil];
+            [scanDeviceAlert setTag:reachMaxNumberOfDeviceBorrowed];
+            [scanDeviceAlert show];
+        }
         
         //if device QR is already scanned, trigger checkout
-        if(_deviceObjectID){
+        else if(_deviceObjectID){
             //get device object
             PFQuery *deviceQuery = [PFQuery queryWithClassName:@"Devices"];
             [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
@@ -350,6 +365,10 @@
             NSLog(@"User is going to start again");
             [self reset];
         }
+        else if(alertView.tag == reachMaxNumberOfDeviceBorrowed){
+            NSLog(@"User has reached the max number of device to borrow");
+            [self reset];
+        }
     }
     else if(buttonIndex == 1)
     {
@@ -360,7 +379,9 @@
             //update to cloud, clear the user cell for returned device
             [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
                 NSString *deviceUser = device[@"user"];
+                NSString *deviceUserObjectId = device[@"userObjectId"];
                 device[@"user"] = @"";
+                device[@"userObjectId"] = @"";
                 
                 [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
@@ -377,8 +398,15 @@
                 transaction[@"deviceId"] = device[@"deviceId"];
                 transaction[@"model"] = device[@"model"];
                 transaction[@"user"] = deviceUser;
+                transaction[@"userObjectId"] = deviceUserObjectId;
                 transaction[@"action"] = @"return";
                 [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
+                
+                //decrement borrowed counter for that user
+                PFObject *user = [PFObject objectWithoutDataWithClassName:@"Users" objectId:deviceUserObjectId];
+                [user incrementKey:@"numberOfDeviceBorrowed" byAmount:[NSNumber numberWithInt:-1]];
+                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
+
                 
                 [self reset];
             }];
@@ -390,7 +418,7 @@
             //update to cloud, update device user cell with borrower's username
             [deviceQuery getObjectInBackgroundWithId:_deviceObjectID block:^(PFObject *device, NSError *error) {
                 device[@"user"] = _userName;
-
+                device[@"userObjectId"] = _userObjectID;
                 [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                        NSLog(@"%@",device);
@@ -409,6 +437,11 @@
                 transaction[@"action"] = @"borrow";
                 [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
 
+                //increment borrowed counter for that user
+                PFObject *user = [PFObject objectWithoutDataWithClassName:@"Users" objectId:_userObjectID];
+                [user incrementKey:@"numberOfDeviceBorrowed" byAmount:[NSNumber numberWithInt:1]];
+                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
+                
                 [self reset];
             }];
         }
