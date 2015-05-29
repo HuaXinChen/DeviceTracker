@@ -23,7 +23,7 @@
 #define scanUserAlertView 3
 #define scanDeviceAlertView 4
 #define deviceNotFoundAlertView 5
-#define reachMaxNumberOfDeviceBorrowed 6
+#define reachMaxNumberOfDeviceBorrowedAlertView 6
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -283,7 +283,7 @@
                                                                       delegate:self
                                                              cancelButtonTitle:@"OK"
                                                              otherButtonTitles: nil];
-            [scanDeviceAlert setTag:reachMaxNumberOfDeviceBorrowed];
+            [scanDeviceAlert setTag:reachMaxNumberOfDeviceBorrowedAlertView];
             [scanDeviceAlert show];
         }
         
@@ -365,7 +365,7 @@
             NSLog(@"User is going to start again");
             [self reset];
         }
-        else if(alertView.tag == reachMaxNumberOfDeviceBorrowed){
+        else if(alertView.tag == reachMaxNumberOfDeviceBorrowedAlertView){
             NSLog(@"User has reached the max number of device to borrow");
             [self reset];
         }
