@@ -209,7 +209,7 @@
                     //set image view size
                     UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
                     //load image
-                    UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+                    UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.png", deviceModel]];
                     //set image to imageView keep the ratio
                     [deviceImageView setImage:deviceImage];
                     deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -242,7 +242,7 @@
                 //set image view size
                 UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
                 //load image
-                UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+                UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.png", deviceModel]];
                 //set image to imageView and keep the ratio
                 [deviceImageView setImage:deviceImage];
                 deviceImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -308,7 +308,7 @@
                 //set image view size
                 UIImageView *deviceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(180, 10, 70, 40)];
                 //load image
-                UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.jpg", deviceModel]];
+                UIImage *deviceImage = [UIImage imageNamed: [NSString stringWithFormat: @"%@.png", deviceModel]];
                 
                 //set image to imageView keep the ratio
                 [deviceImageView setImage:deviceImage];

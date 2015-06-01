@@ -7,16 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4855E01B1CF8E900F6F094 /* Galaxy Note 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855C91B1CF8E900F6F094 /* Galaxy Note 2.png */; };
+		2C4855E11B1CF8E900F6F094 /* Galaxy Note 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855CA1B1CF8E900F6F094 /* Galaxy Note 4.png */; };
+		2C4855E21B1CF8E900F6F094 /* Galaxy Note.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855CB1B1CF8E900F6F094 /* Galaxy Note.png */; };
+		2C4855E31B1CF8E900F6F094 /* Galaxy S3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855CC1B1CF8E900F6F094 /* Galaxy S3.png */; };
+		2C4855E41B1CF8E900F6F094 /* Galaxy S4 Mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855CD1B1CF8E900F6F094 /* Galaxy S4 Mini.png */; };
+		2C4855E51B1CF8E900F6F094 /* Galaxy S4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855CE1B1CF8E900F6F094 /* Galaxy S4.png */; };
+		2C4855E61B1CF8E900F6F094 /* Galaxy Tab 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855CF1B1CF8E900F6F094 /* Galaxy Tab 2.png */; };
+		2C4855E71B1CF8E900F6F094 /* Galaxy Tab 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D01B1CF8E900F6F094 /* Galaxy Tab 3.png */; };
+		2C4855E81B1CF8E900F6F094 /* Galaxy Tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D11B1CF8E900F6F094 /* Galaxy Tab.png */; };
+		2C4855E91B1CF8E900F6F094 /* hudl.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D21B1CF8E900F6F094 /* hudl.png */; };
+		2C4855EA1B1CF8E900F6F094 /* hudl2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D31B1CF8E900F6F094 /* hudl2.png */; };
+		2C4855EB1B1CF8E900F6F094 /* iPad 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D41B1CF8E900F6F094 /* iPad 3.png */; };
+		2C4855EC1B1CF8E900F6F094 /* iPad 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D51B1CF8E900F6F094 /* iPad 4.png */; };
+		2C4855ED1B1CF8E900F6F094 /* iPad Air.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D61B1CF8E900F6F094 /* iPad Air.png */; };
+		2C4855EE1B1CF8E900F6F094 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D71B1CF8E900F6F094 /* iPad.png */; };
+		2C4855EF1B1CF8E900F6F094 /* iPhone 4 (Black).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */; };
+		2C4855F01B1CF8E900F6F094 /* iPhone 6 (Gold).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */; };
+		2C4855F11B1CF8E900F6F094 /* iPhone 6 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */; };
+		2C4855F21B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png */; };
+		2C4855F41B1CF8E900F6F094 /* Nexus 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DD1B1CF8E900F6F094 /* Nexus 5.png */; };
+		2C4855F51B1CF8E900F6F094 /* One M8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DE1B1CF8E900F6F094 /* One M8.png */; };
+		2C4855F61B1CF8E900F6F094 /* OnePlus One.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DF1B1CF8E900F6F094 /* OnePlus One.png */; };
+		2C4856041B1D01BA00F6F094 /* G-Pad (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855F71B1D01BA00F6F094 /* G-Pad (White).png */; };
+		2C4856051B1D01BA00F6F094 /* Galaxy S5 (Navy).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855F81B1D01BA00F6F094 /* Galaxy S5 (Navy).png */; };
+		2C4856061B1D01BA00F6F094 /* Galaxy S5 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855F91B1D01BA00F6F094 /* Galaxy S5 (White).png */; };
+		2C4856071B1D01BA00F6F094 /* iPad Mini (Black).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FA1B1D01BA00F6F094 /* iPad Mini (Black).png */; };
+		2C4856081B1D01BA00F6F094 /* iPad Mini (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FB1B1D01BA00F6F094 /* iPad Mini (White).png */; };
+		2C4856091B1D01BA00F6F094 /* iPhone 5 (Black).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FC1B1D01BA00F6F094 /* iPhone 5 (Black).png */; };
+		2C48560A1B1D01BA00F6F094 /* iPhone 5c (Green).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FD1B1D01BA00F6F094 /* iPhone 5c (Green).png */; };
+		2C48560B1B1D01BA00F6F094 /* iPhone 5s (Gold).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FE1B1D01BA00F6F094 /* iPhone 5s (Gold).png */; };
+		2C48560C1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png */; };
+		2C48560D1B1D01BA00F6F094 /* iPod Touch 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856001B1D01BA00F6F094 /* iPod Touch 4.png */; };
+		2C48560E1B1D01BA00F6F094 /* iPod Touch 5 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */; };
+		2C48560F1B1D01BA00F6F094 /* Nexus 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856021B1D01BA00F6F094 /* Nexus 7.png */; };
+		2C4856101B1D01BA00F6F094 /* Optimus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856031B1D01BA00F6F094 /* Optimus.png */; };
 		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
 		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
 		5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703AD231A1FBE4A000CACC8 /* StatusViewController.m */; };
-		5703AD2D1A1FE661000CACC8 /* iPhone 5 S (Gold).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */; };
-		5703AD2E1A1FE661000CACC8 /* iPad Mini (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD271A1FE661000CACC8 /* iPad Mini (White).jpg */; };
-		5703AD2F1A1FE661000CACC8 /* iPhone 5 (Black).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD281A1FE661000CACC8 /* iPhone 5 (Black).jpg */; };
-		5703AD301A1FE661000CACC8 /* iPad Mini (Black).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD291A1FE661000CACC8 /* iPad Mini (Black).jpg */; };
-		5703AD311A1FE661000CACC8 /* iPod Touch 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD2A1A1FE661000CACC8 /* iPod Touch 4.jpg */; };
-		5703AD321A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */; };
-		5703AD331A1FE661000CACC8 /* iPhone 5 C (Green).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */; };
 		574993FE1A00AE8600F79F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 574993FD1A00AE8600F79F9F /* main.m */; };
 		574994011A00AE8600F79F9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994001A00AE8600F79F9F /* AppDelegate.m */; };
 		574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 574994021A00AE8600F79F9F /* DeviceTracker.xcdatamodeld */; };
@@ -45,11 +73,6 @@
 		6EC8F45A1B13CAAB00C7CAF6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC8F4591B13CAAB00C7CAF6 /* libz.dylib */; };
 		6EC8F45C1B13D9FC00C7CAF6 /* DeviceStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC8F45B1B13D9FC00C7CAF6 /* DeviceStatusViewController.m */; };
 		6EC8F45F1B13DF0A00C7CAF6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC8F45E1B13DF0A00C7CAF6 /* ParseUI.framework */; };
-		8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7351A27B2DE000F7972 /* Optimus.jpg */; };
-		8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */; };
-		8E17E73C1A27B2DE000F7972 /* Galaxy S5 (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7371A27B2DE000F7972 /* Galaxy S5 (White).jpg */; };
-		8E17E73D1A27B2DE000F7972 /* Galaxy S5 (Navy).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */; };
-		8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */; };
 		8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */; };
 		8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */; };
 /* End PBXBuildFile section */
@@ -65,17 +88,45 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C4855C91B1CF8E900F6F094 /* Galaxy Note 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy Note 2.png"; sourceTree = "<group>"; };
+		2C4855CA1B1CF8E900F6F094 /* Galaxy Note 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy Note 4.png"; sourceTree = "<group>"; };
+		2C4855CB1B1CF8E900F6F094 /* Galaxy Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy Note.png"; sourceTree = "<group>"; };
+		2C4855CC1B1CF8E900F6F094 /* Galaxy S3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy S3.png"; sourceTree = "<group>"; };
+		2C4855CD1B1CF8E900F6F094 /* Galaxy S4 Mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy S4 Mini.png"; sourceTree = "<group>"; };
+		2C4855CE1B1CF8E900F6F094 /* Galaxy S4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy S4.png"; sourceTree = "<group>"; };
+		2C4855CF1B1CF8E900F6F094 /* Galaxy Tab 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy Tab 2.png"; sourceTree = "<group>"; };
+		2C4855D01B1CF8E900F6F094 /* Galaxy Tab 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy Tab 3.png"; sourceTree = "<group>"; };
+		2C4855D11B1CF8E900F6F094 /* Galaxy Tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy Tab.png"; sourceTree = "<group>"; };
+		2C4855D21B1CF8E900F6F094 /* hudl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hudl.png; sourceTree = "<group>"; };
+		2C4855D31B1CF8E900F6F094 /* hudl2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hudl2.png; sourceTree = "<group>"; };
+		2C4855D41B1CF8E900F6F094 /* iPad 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad 3.png"; sourceTree = "<group>"; };
+		2C4855D51B1CF8E900F6F094 /* iPad 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad 4.png"; sourceTree = "<group>"; };
+		2C4855D61B1CF8E900F6F094 /* iPad Air.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Air.png"; sourceTree = "<group>"; };
+		2C4855D71B1CF8E900F6F094 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad.png; sourceTree = "<group>"; };
+		2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 4 (Black).png"; sourceTree = "<group>"; };
+		2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (Gold).png"; sourceTree = "<group>"; };
+		2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (White).png"; sourceTree = "<group>"; };
+		2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6+ (Space Grey).png"; sourceTree = "<group>"; };
+		2C4855DD1B1CF8E900F6F094 /* Nexus 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nexus 5.png"; sourceTree = "<group>"; };
+		2C4855DE1B1CF8E900F6F094 /* One M8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "One M8.png"; sourceTree = "<group>"; };
+		2C4855DF1B1CF8E900F6F094 /* OnePlus One.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OnePlus One.png"; sourceTree = "<group>"; };
+		2C4855F71B1D01BA00F6F094 /* G-Pad (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "G-Pad (White).png"; sourceTree = "<group>"; };
+		2C4855F81B1D01BA00F6F094 /* Galaxy S5 (Navy).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy S5 (Navy).png"; sourceTree = "<group>"; };
+		2C4855F91B1D01BA00F6F094 /* Galaxy S5 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galaxy S5 (White).png"; sourceTree = "<group>"; };
+		2C4855FA1B1D01BA00F6F094 /* iPad Mini (Black).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Mini (Black).png"; sourceTree = "<group>"; };
+		2C4855FB1B1D01BA00F6F094 /* iPad Mini (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Mini (White).png"; sourceTree = "<group>"; };
+		2C4855FC1B1D01BA00F6F094 /* iPhone 5 (Black).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 5 (Black).png"; sourceTree = "<group>"; };
+		2C4855FD1B1D01BA00F6F094 /* iPhone 5c (Green).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 5c (Green).png"; sourceTree = "<group>"; };
+		2C4855FE1B1D01BA00F6F094 /* iPhone 5s (Gold).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 5s (Gold).png"; sourceTree = "<group>"; };
+		2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (Space Grey).png"; sourceTree = "<group>"; };
+		2C4856001B1D01BA00F6F094 /* iPod Touch 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Touch 4.png"; sourceTree = "<group>"; };
+		2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Touch 5 (White).png"; sourceTree = "<group>"; };
+		2C4856021B1D01BA00F6F094 /* Nexus 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nexus 7.png"; sourceTree = "<group>"; };
+		2C4856031B1D01BA00F6F094 /* Optimus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Optimus.png; sourceTree = "<group>"; };
 		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5703AD221A1FBE4A000CACC8 /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
 		5703AD231A1FBE4A000CACC8 /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
-		5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 5 S (Gold).jpg"; sourceTree = "<group>"; };
-		5703AD271A1FE661000CACC8 /* iPad Mini (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPad Mini (White).jpg"; sourceTree = "<group>"; };
-		5703AD281A1FE661000CACC8 /* iPhone 5 (Black).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 5 (Black).jpg"; sourceTree = "<group>"; };
-		5703AD291A1FE661000CACC8 /* iPad Mini (Black).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPad Mini (Black).jpg"; sourceTree = "<group>"; };
-		5703AD2A1A1FE661000CACC8 /* iPod Touch 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPod Touch 4.jpg"; sourceTree = "<group>"; };
-		5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 6 (Space Gray).jpg"; sourceTree = "<group>"; };
-		5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone 5 C (Green).jpg"; sourceTree = "<group>"; };
 		574993F81A00AE8600F79F9F /* DeviceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574993FC1A00AE8600F79F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		574993FD1A00AE8600F79F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,11 +163,6 @@
 		6EC8F45B1B13D9FC00C7CAF6 /* DeviceStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceStatusViewController.m; sourceTree = "<group>"; };
 		6EC8F45D1B13DA1D00C7CAF6 /* DeviceStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceStatusViewController.h; sourceTree = "<group>"; };
 		6EC8F45E1B13DF0A00C7CAF6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		8E17E7351A27B2DE000F7972 /* Optimus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Optimus.jpg; sourceTree = "<group>"; };
-		8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Google Nexus 7.jpg"; sourceTree = "<group>"; };
-		8E17E7371A27B2DE000F7972 /* Galaxy S5 (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (White).jpg"; sourceTree = "<group>"; };
-		8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Galaxy S5 (Navy).jpg"; sourceTree = "<group>"; };
-		8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "G-Pad (White).jpg"; sourceTree = "<group>"; };
 		8E7B3B321A4201F2007C71F6 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PNI_Launch_Logo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,23 +223,46 @@
 			isa = PBXGroup;
 			children = (
 				8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */,
+				2C4855C91B1CF8E900F6F094 /* Galaxy Note 2.png */,
+				2C4855CA1B1CF8E900F6F094 /* Galaxy Note 4.png */,
+				2C4855CB1B1CF8E900F6F094 /* Galaxy Note.png */,
+				2C4855CC1B1CF8E900F6F094 /* Galaxy S3.png */,
+				2C4855CD1B1CF8E900F6F094 /* Galaxy S4 Mini.png */,
+				2C4855CE1B1CF8E900F6F094 /* Galaxy S4.png */,
+				2C4855CF1B1CF8E900F6F094 /* Galaxy Tab 2.png */,
+				2C4855D01B1CF8E900F6F094 /* Galaxy Tab 3.png */,
+				2C4855D11B1CF8E900F6F094 /* Galaxy Tab.png */,
+				2C4855D21B1CF8E900F6F094 /* hudl.png */,
+				2C4855D31B1CF8E900F6F094 /* hudl2.png */,
+				2C4855D41B1CF8E900F6F094 /* iPad 3.png */,
+				2C4855D51B1CF8E900F6F094 /* iPad 4.png */,
+				2C4855D61B1CF8E900F6F094 /* iPad Air.png */,
+				2C4855D71B1CF8E900F6F094 /* iPad.png */,
+				2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */,
+				2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */,
+				2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */,
+				2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png */,
+				2C4855DD1B1CF8E900F6F094 /* Nexus 5.png */,
+				2C4855DE1B1CF8E900F6F094 /* One M8.png */,
+				2C4855F71B1D01BA00F6F094 /* G-Pad (White).png */,
+				2C4855F81B1D01BA00F6F094 /* Galaxy S5 (Navy).png */,
+				2C4855F91B1D01BA00F6F094 /* Galaxy S5 (White).png */,
+				2C4855FA1B1D01BA00F6F094 /* iPad Mini (Black).png */,
+				2C4855FB1B1D01BA00F6F094 /* iPad Mini (White).png */,
+				2C4855FC1B1D01BA00F6F094 /* iPhone 5 (Black).png */,
+				2C4855FD1B1D01BA00F6F094 /* iPhone 5c (Green).png */,
+				2C4855FE1B1D01BA00F6F094 /* iPhone 5s (Gold).png */,
+				2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png */,
+				2C4856001B1D01BA00F6F094 /* iPod Touch 4.png */,
+				2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */,
+				2C4856021B1D01BA00F6F094 /* Nexus 7.png */,
+				2C4856031B1D01BA00F6F094 /* Optimus.png */,
+				2C4855DF1B1CF8E900F6F094 /* OnePlus One.png */,
 				5776A9661A30FC8700CDC707 /* logo_PNI.png */,
 				57E5EB381A2EC155002F31E2 /* available.png */,
 				57E5EB391A2EC155002F31E2 /* unavailable.png */,
-				8E17E7351A27B2DE000F7972 /* Optimus.jpg */,
 				5776A9621A303FD700CDC707 /* search@3x.png */,
 				5776A9631A303FD700CDC707 /* top_charts@3x.png */,
-				8E17E7361A27B2DE000F7972 /* Google Nexus 7.jpg */,
-				8E17E7371A27B2DE000F7972 /* Galaxy S5 (White).jpg */,
-				8E17E7381A27B2DE000F7972 /* Galaxy S5 (Navy).jpg */,
-				8E17E7391A27B2DE000F7972 /* G-Pad (White).jpg */,
-				5703AD261A1FE661000CACC8 /* iPhone 5 S (Gold).jpg */,
-				5703AD271A1FE661000CACC8 /* iPad Mini (White).jpg */,
-				5703AD281A1FE661000CACC8 /* iPhone 5 (Black).jpg */,
-				5703AD291A1FE661000CACC8 /* iPad Mini (Black).jpg */,
-				5703AD2A1A1FE661000CACC8 /* iPod Touch 4.jpg */,
-				5703AD2B1A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg */,
-				5703AD2C1A1FE661000CACC8 /* iPhone 5 C (Green).jpg */,
 				574993FF1A00AE8600F79F9F /* AppDelegate.h */,
 				574994001A00AE8600F79F9F /* AppDelegate.m */,
 				5703AD221A1FBE4A000CACC8 /* StatusViewController.h */,
@@ -343,28 +412,51 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5703AD331A1FE661000CACC8 /* iPhone 5 C (Green).jpg in Resources */,
-				5703AD311A1FE661000CACC8 /* iPod Touch 4.jpg in Resources */,
+				2C4856061B1D01BA00F6F094 /* Galaxy S5 (White).png in Resources */,
+				2C4856081B1D01BA00F6F094 /* iPad Mini (White).png in Resources */,
 				5776A9671A30FC8700CDC707 /* logo_PNI.png in Resources */,
+				2C4855E41B1CF8E900F6F094 /* Galaxy S4 Mini.png in Resources */,
+				2C4855ED1B1CF8E900F6F094 /* iPad Air.png in Resources */,
 				5749940F1A00AE8600F79F9F /* LaunchScreen.xib in Resources */,
-				8E17E73D1A27B2DE000F7972 /* Galaxy S5 (Navy).jpg in Resources */,
+				2C4855EA1B1CF8E900F6F094 /* hudl2.png in Resources */,
+				2C4855EC1B1CF8E900F6F094 /* iPad 4.png in Resources */,
+				2C4856071B1D01BA00F6F094 /* iPad Mini (Black).png in Resources */,
+				2C4856101B1D01BA00F6F094 /* Optimus.png in Resources */,
 				57E5EB3B1A2EC155002F31E2 /* unavailable.png in Resources */,
-				5703AD301A1FE661000CACC8 /* iPad Mini (Black).jpg in Resources */,
-				5703AD321A1FE661000CACC8 /* iPhone 6 (Space Gray).jpg in Resources */,
+				2C4855F11B1CF8E900F6F094 /* iPhone 6 (White).png in Resources */,
+				2C48560B1B1D01BA00F6F094 /* iPhone 5s (Gold).png in Resources */,
+				2C4855E71B1CF8E900F6F094 /* Galaxy Tab 3.png in Resources */,
+				2C48560D1B1D01BA00F6F094 /* iPod Touch 4.png in Resources */,
 				577807701A072C6E00D5FA02 /* beep.mp3 in Resources */,
-				5703AD2F1A1FE661000CACC8 /* iPhone 5 (Black).jpg in Resources */,
+				2C48560A1B1D01BA00F6F094 /* iPhone 5c (Green).png in Resources */,
+				2C4855F21B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png in Resources */,
+				2C48560E1B1D01BA00F6F094 /* iPod Touch 5 (White).png in Resources */,
+				2C4855E31B1CF8E900F6F094 /* Galaxy S3.png in Resources */,
 				5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */,
+				2C4856051B1D01BA00F6F094 /* Galaxy S5 (Navy).png in Resources */,
+				2C4856041B1D01BA00F6F094 /* G-Pad (White).png in Resources */,
 				5776A9641A303FD700CDC707 /* search@3x.png in Resources */,
 				436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */,
-				5703AD2D1A1FE661000CACC8 /* iPhone 5 S (Gold).jpg in Resources */,
-				8E17E73E1A27B2DE000F7972 /* G-Pad (White).jpg in Resources */,
-				5703AD2E1A1FE661000CACC8 /* iPad Mini (White).jpg in Resources */,
-				8E17E73A1A27B2DE000F7972 /* Optimus.jpg in Resources */,
-				8E17E73C1A27B2DE000F7972 /* Galaxy S5 (White).jpg in Resources */,
+				2C48560F1B1D01BA00F6F094 /* Nexus 7.png in Resources */,
+				2C4855F01B1CF8E900F6F094 /* iPhone 6 (Gold).png in Resources */,
+				2C4855F51B1CF8E900F6F094 /* One M8.png in Resources */,
+				2C4855E91B1CF8E900F6F094 /* hudl.png in Resources */,
+				2C48560C1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png in Resources */,
+				2C4855E51B1CF8E900F6F094 /* Galaxy S4.png in Resources */,
+				2C4855E61B1CF8E900F6F094 /* Galaxy Tab 2.png in Resources */,
+				2C4855E01B1CF8E900F6F094 /* Galaxy Note 2.png in Resources */,
+				2C4855EB1B1CF8E900F6F094 /* iPad 3.png in Resources */,
 				8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */,
-				8E17E73B1A27B2DE000F7972 /* Google Nexus 7.jpg in Resources */,
+				2C4855EE1B1CF8E900F6F094 /* iPad.png in Resources */,
+				2C4855EF1B1CF8E900F6F094 /* iPhone 4 (Black).png in Resources */,
 				8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */,
+				2C4856091B1D01BA00F6F094 /* iPhone 5 (Black).png in Resources */,
+				2C4855F41B1CF8E900F6F094 /* Nexus 5.png in Resources */,
+				2C4855E21B1CF8E900F6F094 /* Galaxy Note.png in Resources */,
 				5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */,
+				2C4855F61B1CF8E900F6F094 /* OnePlus One.png in Resources */,
+				2C4855E11B1CF8E900F6F094 /* Galaxy Note 4.png in Resources */,
+				2C4855E81B1CF8E900F6F094 /* Galaxy Tab.png in Resources */,
 				57E5EB3A1A2EC155002F31E2 /* available.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
