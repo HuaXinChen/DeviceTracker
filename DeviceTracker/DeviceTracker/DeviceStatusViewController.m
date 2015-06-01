@@ -39,6 +39,8 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
+    [query orderByDescending:@"updatedAt"];
+    
     return query;
 }
 
@@ -52,23 +54,28 @@
     }
     
     // Configure the cell
-//    PFFile *thumbnail = [object objectForKey:@"imageFile"];
-//    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
-//    thumbnailImageView.image = [UIImage imageNamed:@"placeholder.jpg"];
-//    thumbnailImageView.file = thumbnail;
-//    [thumbnailImageView loadInBackground];
     
-    UILabel *deviceIdLabel = (UILabel*) [cell viewWithTag:101];
-    deviceIdLabel.text = [object objectForKey:@"deviceid"];
-    deviceIdLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    
-    UILabel *modelLable = (UILabel*) [cell viewWithTag:102];
+    UILabel *modelLable = (UILabel*) [cell viewWithTag:101];
     modelLable.text = [object objectForKey:@"model"];
-    modelLable.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+    modelLable.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     
+    UILabel *deviceIdLabel = (UILabel*) [cell viewWithTag:102];
+    deviceIdLabel.text = [object objectForKey:@"deviceId"];
+    deviceIdLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+
     UILabel *nameLable = (UILabel*) [cell viewWithTag:103];
     nameLable.text = [object objectForKey:@"user"];
-    nameLable.font = [UIFont boldSystemFontOfSize:17.0];
+    nameLable.font = [UIFont boldSystemFontOfSize:15.0];
+    
+    //Different background for odd and even rows
+    if (indexPath.row % 2) {
+        cell.backgroundColor = [UIColor whiteColor];
+    }else {
+        cell.backgroundColor = [UIColor colorWithWhite: 0.95 alpha:1];
+    }
+    
+    //disable cell selection
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
