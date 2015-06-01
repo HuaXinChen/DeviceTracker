@@ -199,30 +199,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		574993EF1A00AE8600F79F9F = {
+		2C4856111B1D11A900F6F094 /* Device Thumbnails */ = {
 			isa = PBXGroup;
 			children = (
-				43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */,
-				574993FA1A00AE8600F79F9F /* DeviceTracker */,
-				574994171A00AE8600F79F9F /* DeviceTrackerTests */,
-				574993F91A00AE8600F79F9F /* Products */,
-				6EC8F4461B13C9A300C7CAF6 /* Frameworks */,
 			);
+			name = "Device Thumbnails";
 			sourceTree = "<group>";
 		};
-		574993F91A00AE8600F79F9F /* Products */ = {
+		2C4856131B1D11F400F6F094 /* Device Thumbnails */ = {
 			isa = PBXGroup;
 			children = (
-				574993F81A00AE8600F79F9F /* DeviceTracker.app */,
-				574994141A00AE8600F79F9F /* DeviceTrackerTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		574993FA1A00AE8600F79F9F /* DeviceTracker */ = {
-			isa = PBXGroup;
-			children = (
-				8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */,
 				2C4855C91B1CF8E900F6F094 /* Galaxy Note 2.png */,
 				2C4855CA1B1CF8E900F6F094 /* Galaxy Note 4.png */,
 				2C4855CB1B1CF8E900F6F094 /* Galaxy Note.png */,
@@ -258,9 +244,39 @@
 				2C4856021B1D01BA00F6F094 /* Nexus 7.png */,
 				2C4856031B1D01BA00F6F094 /* Optimus.png */,
 				2C4855DF1B1CF8E900F6F094 /* OnePlus One.png */,
-				5776A9661A30FC8700CDC707 /* logo_PNI.png */,
+			);
+			name = "Device Thumbnails";
+			sourceTree = "<group>";
+		};
+		574993EF1A00AE8600F79F9F = {
+			isa = PBXGroup;
+			children = (
+				43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */,
+				574993FA1A00AE8600F79F9F /* DeviceTracker */,
+				574994171A00AE8600F79F9F /* DeviceTrackerTests */,
+				574993F91A00AE8600F79F9F /* Products */,
+				6EC8F4461B13C9A300C7CAF6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		574993F91A00AE8600F79F9F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				574993F81A00AE8600F79F9F /* DeviceTracker.app */,
+				574994141A00AE8600F79F9F /* DeviceTrackerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		574993FA1A00AE8600F79F9F /* DeviceTracker */ = {
+			isa = PBXGroup;
+			children = (
+				2C4856111B1D11A900F6F094 /* Device Thumbnails */,
+				8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */,
+				2C4856131B1D11F400F6F094 /* Device Thumbnails */,
 				57E5EB381A2EC155002F31E2 /* available.png */,
 				57E5EB391A2EC155002F31E2 /* unavailable.png */,
+				5776A9661A30FC8700CDC707 /* logo_PNI.png */,
 				5776A9621A303FD700CDC707 /* search@3x.png */,
 				5776A9631A303FD700CDC707 /* top_charts@3x.png */,
 				574993FF1A00AE8600F79F9F /* AppDelegate.h */,
