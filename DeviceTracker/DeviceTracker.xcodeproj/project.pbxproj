@@ -41,6 +41,7 @@
 		2C48560E1B1D01BA00F6F094 /* iPod Touch 5 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */; };
 		2C48560F1B1D01BA00F6F094 /* Nexus 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856021B1D01BA00F6F094 /* Nexus 7.png */; };
 		2C4856101B1D01BA00F6F094 /* Optimus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856031B1D01BA00F6F094 /* Optimus.png */; };
+		2C8486171B1D28460078FCC1 /* iPad 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8486161B1D28460078FCC1 /* iPad 1.png */; };
 		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
 		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
 		5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703AD231A1FBE4A000CACC8 /* StatusViewController.m */; };
@@ -121,6 +122,7 @@
 		2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Touch 5 (White).png"; sourceTree = "<group>"; };
 		2C4856021B1D01BA00F6F094 /* Nexus 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nexus 7.png"; sourceTree = "<group>"; };
 		2C4856031B1D01BA00F6F094 /* Optimus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Optimus.png; sourceTree = "<group>"; };
+		2C8486161B1D28460078FCC1 /* iPad 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad 1.png"; sourceTree = "<group>"; };
 		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5703AD221A1FBE4A000CACC8 /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		2C4856131B1D11F400F6F094 /* Device Thumbnails */ = {
 			isa = PBXGroup;
 			children = (
+				2C8486161B1D28460078FCC1 /* iPad 1.png */,
 				2C4855C91B1CF8E900F6F094 /* Galaxy Note 2.png */,
 				2C4855CA1B1CF8E900F6F094 /* Galaxy Note 4.png */,
 				2C4855CB1B1CF8E900F6F094 /* Galaxy Note.png */,
@@ -459,6 +462,7 @@
 				2C4855E61B1CF8E900F6F094 /* Galaxy Tab 2.png in Resources */,
 				2C4855E01B1CF8E900F6F094 /* Galaxy Note 2.png in Resources */,
 				2C4855EB1B1CF8E900F6F094 /* iPad 3.png in Resources */,
+				2C8486171B1D28460078FCC1 /* iPad 1.png in Resources */,
 				8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */,
 				2C4855EF1B1CF8E900F6F094 /* iPhone 4 (Black).png in Resources */,
 				8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */,
