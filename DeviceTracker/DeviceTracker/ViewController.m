@@ -345,10 +345,12 @@
     {
         if(alertView.tag == returnAlertView){
             NSLog(@"User cancel on return");
+            self.lblStatus.text = @"";
             [self reset];
         }
         else if(alertView.tag == borrowAlertView){
             NSLog(@"User cancel on borrow");
+            self.lblStatus.text = @"";
             [self reset];
         }
         else if(alertView.tag == scanUserAlertView){
@@ -363,10 +365,12 @@
         }
         else if(alertView.tag == deviceNotFoundAlertView){
             NSLog(@"User is going to start again");
+            self.lblStatus.text = @"";
             [self reset];
         }
         else if(alertView.tag == reachMaxNumberOfDeviceBorrowedAlertView){
             NSLog(@"User has reached the max number of device to borrow");
+            self.lblStatus.text = @"";
             [self reset];
         }
     }
