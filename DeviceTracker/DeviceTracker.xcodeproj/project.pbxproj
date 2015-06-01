@@ -21,7 +21,6 @@
 		2C4855EB1B1CF8E900F6F094 /* iPad 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D41B1CF8E900F6F094 /* iPad 3.png */; };
 		2C4855EC1B1CF8E900F6F094 /* iPad 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D51B1CF8E900F6F094 /* iPad 4.png */; };
 		2C4855ED1B1CF8E900F6F094 /* iPad Air.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D61B1CF8E900F6F094 /* iPad Air.png */; };
-		2C4855EE1B1CF8E900F6F094 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D71B1CF8E900F6F094 /* iPad.png */; };
 		2C4855EF1B1CF8E900F6F094 /* iPhone 4 (Black).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */; };
 		2C4855F01B1CF8E900F6F094 /* iPhone 6 (Gold).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */; };
 		2C4855F11B1CF8E900F6F094 /* iPhone 6 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */; };
@@ -102,7 +101,6 @@
 		2C4855D41B1CF8E900F6F094 /* iPad 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad 3.png"; sourceTree = "<group>"; };
 		2C4855D51B1CF8E900F6F094 /* iPad 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad 4.png"; sourceTree = "<group>"; };
 		2C4855D61B1CF8E900F6F094 /* iPad Air.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Air.png"; sourceTree = "<group>"; };
-		2C4855D71B1CF8E900F6F094 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad.png; sourceTree = "<group>"; };
 		2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 4 (Black).png"; sourceTree = "<group>"; };
 		2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (Gold).png"; sourceTree = "<group>"; };
 		2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (White).png"; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				2C4855D41B1CF8E900F6F094 /* iPad 3.png */,
 				2C4855D51B1CF8E900F6F094 /* iPad 4.png */,
 				2C4855D61B1CF8E900F6F094 /* iPad Air.png */,
-				2C4855D71B1CF8E900F6F094 /* iPad.png */,
 				2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */,
 				2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */,
 				2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */,
@@ -463,7 +460,6 @@
 				2C4855E01B1CF8E900F6F094 /* Galaxy Note 2.png in Resources */,
 				2C4855EB1B1CF8E900F6F094 /* iPad 3.png in Resources */,
 				8E7B3B331A4201F2007C71F6 /* Images-2.xcassets in Resources */,
-				2C4855EE1B1CF8E900F6F094 /* iPad.png in Resources */,
 				2C4855EF1B1CF8E900F6F094 /* iPhone 4 (Black).png in Resources */,
 				8E84681C1A311AF800D8BB0A /* PNI_Launch_Logo.jpg in Resources */,
 				2C4856091B1D01BA00F6F094 /* iPhone 5 (Black).png in Resources */,
