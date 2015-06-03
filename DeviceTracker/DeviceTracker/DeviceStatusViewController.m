@@ -55,26 +55,33 @@
     
     // Configure the cell
     
-    UILabel *modelLable = (UILabel*) [cell viewWithTag:101];
-    modelLable.text = [object objectForKey:@"model"];
-    modelLable.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    UILabel *modelLabel = (UILabel*) [cell viewWithTag:101];
+    modelLabel.text = [object objectForKey:@"model"];
+    modelLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     
     UILabel *deviceIdLabel = (UILabel*) [cell viewWithTag:102];
     deviceIdLabel.text = [object objectForKey:@"deviceId"];
     deviceIdLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
 
-    UILabel *nameLable = (UILabel*) [cell viewWithTag:103];
-    nameLable.text = [object objectForKey:@"user"];
-    nameLable.font = [UIFont boldSystemFontOfSize:15.0];
+    UILabel *nameLabel = (UILabel*) [cell viewWithTag:103];
+    nameLabel.text = [object objectForKey:@"user"];
+    nameLabel.font = [UIFont boldSystemFontOfSize:15.0];
     
-    UILabel *deviceLastUpdate = (UILabel*) [cell viewWithTag:104];
-    NSDateFormatter *formatter;
-    formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM-dd-yyyy HH:mm"];
-    NSDate *lastUpdated = object.updatedAt;
-    deviceLastUpdate.text = [formatter stringFromDate:lastUpdated];
-    deviceLastUpdate.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
-    
+    if (![nameLabel.text isEqual: @""]){
+        UILabel *deviceLastUpdateLabel = (UILabel*) [cell viewWithTag:104];
+        NSDateFormatter *formatter;
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM-dd-yyyy HH:mm"];
+        NSDate *lastUpdated = object.updatedAt;
+        deviceLastUpdateLabel.text = [formatter stringFromDate:lastUpdated];
+        deviceLastUpdateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    }
+    else
+    {
+        UILabel *deviceLastUpdateLabel = (UILabel*) [cell viewWithTag:104];
+        deviceLastUpdateLabel.text = @"Available";
+        deviceLastUpdateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    }
     //Different background for odd and even rows
     if (indexPath.row % 2) {
         cell.backgroundColor = [UIColor whiteColor];

@@ -24,7 +24,7 @@
 		2C4855EF1B1CF8E900F6F094 /* iPhone 4 (Black).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */; };
 		2C4855F01B1CF8E900F6F094 /* iPhone 6 (Gold).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */; };
 		2C4855F11B1CF8E900F6F094 /* iPhone 6 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */; };
-		2C4855F21B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png */; };
+		2C4855F21B1CF8E900F6F094 /* iPhone 6+ (Grey).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Grey).png */; };
 		2C4855F41B1CF8E900F6F094 /* Nexus 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DD1B1CF8E900F6F094 /* Nexus 5.png */; };
 		2C4855F51B1CF8E900F6F094 /* One M8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DE1B1CF8E900F6F094 /* One M8.png */; };
 		2C4855F61B1CF8E900F6F094 /* OnePlus One.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855DF1B1CF8E900F6F094 /* OnePlus One.png */; };
@@ -36,7 +36,7 @@
 		2C4856091B1D01BA00F6F094 /* iPhone 5 (Black).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FC1B1D01BA00F6F094 /* iPhone 5 (Black).png */; };
 		2C48560A1B1D01BA00F6F094 /* iPhone 5c (Green).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FD1B1D01BA00F6F094 /* iPhone 5c (Green).png */; };
 		2C48560B1B1D01BA00F6F094 /* iPhone 5s (Gold).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FE1B1D01BA00F6F094 /* iPhone 5s (Gold).png */; };
-		2C48560C1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png */; };
+		2C48560C1B1D01BA00F6F094 /* iPhone 6 (Grey).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Grey).png */; };
 		2C48560D1B1D01BA00F6F094 /* iPod Touch 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856001B1D01BA00F6F094 /* iPod Touch 4.png */; };
 		2C48560E1B1D01BA00F6F094 /* iPod Touch 5 (White).png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */; };
 		2C48560F1B1D01BA00F6F094 /* Nexus 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4856021B1D01BA00F6F094 /* Nexus 7.png */; };
@@ -105,7 +105,7 @@
 		2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 4 (Black).png"; sourceTree = "<group>"; };
 		2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (Gold).png"; sourceTree = "<group>"; };
 		2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (White).png"; sourceTree = "<group>"; };
-		2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6+ (Space Grey).png"; sourceTree = "<group>"; };
+		2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Grey).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6+ (Grey).png"; sourceTree = "<group>"; };
 		2C4855DD1B1CF8E900F6F094 /* Nexus 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nexus 5.png"; sourceTree = "<group>"; };
 		2C4855DE1B1CF8E900F6F094 /* One M8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "One M8.png"; sourceTree = "<group>"; };
 		2C4855DF1B1CF8E900F6F094 /* OnePlus One.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OnePlus One.png"; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		2C4855FC1B1D01BA00F6F094 /* iPhone 5 (Black).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 5 (Black).png"; sourceTree = "<group>"; };
 		2C4855FD1B1D01BA00F6F094 /* iPhone 5c (Green).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 5c (Green).png"; sourceTree = "<group>"; };
 		2C4855FE1B1D01BA00F6F094 /* iPhone 5s (Gold).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 5s (Gold).png"; sourceTree = "<group>"; };
-		2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (Space Grey).png"; sourceTree = "<group>"; };
+		2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Grey).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone 6 (Grey).png"; sourceTree = "<group>"; };
 		2C4856001B1D01BA00F6F094 /* iPod Touch 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Touch 4.png"; sourceTree = "<group>"; };
 		2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPod Touch 5 (White).png"; sourceTree = "<group>"; };
 		2C4856021B1D01BA00F6F094 /* Nexus 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nexus 7.png"; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				2C4855D81B1CF8E900F6F094 /* iPhone 4 (Black).png */,
 				2C4855D91B1CF8E900F6F094 /* iPhone 6 (Gold).png */,
 				2C4855DA1B1CF8E900F6F094 /* iPhone 6 (White).png */,
-				2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png */,
+				2C4855DB1B1CF8E900F6F094 /* iPhone 6+ (Grey).png */,
 				2C4855DD1B1CF8E900F6F094 /* Nexus 5.png */,
 				2C4855DE1B1CF8E900F6F094 /* One M8.png */,
 				2C4855F71B1D01BA00F6F094 /* G-Pad (White).png */,
@@ -238,7 +238,7 @@
 				2C4855FC1B1D01BA00F6F094 /* iPhone 5 (Black).png */,
 				2C4855FD1B1D01BA00F6F094 /* iPhone 5c (Green).png */,
 				2C4855FE1B1D01BA00F6F094 /* iPhone 5s (Gold).png */,
-				2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png */,
+				2C4855FF1B1D01BA00F6F094 /* iPhone 6 (Grey).png */,
 				2C4856001B1D01BA00F6F094 /* iPod Touch 4.png */,
 				2C4856011B1D01BA00F6F094 /* iPod Touch 5 (White).png */,
 				2C4856021B1D01BA00F6F094 /* Nexus 7.png */,
@@ -445,7 +445,7 @@
 				2C48560D1B1D01BA00F6F094 /* iPod Touch 4.png in Resources */,
 				577807701A072C6E00D5FA02 /* beep.mp3 in Resources */,
 				2C48560A1B1D01BA00F6F094 /* iPhone 5c (Green).png in Resources */,
-				2C4855F21B1CF8E900F6F094 /* iPhone 6+ (Space Grey).png in Resources */,
+				2C4855F21B1CF8E900F6F094 /* iPhone 6+ (Grey).png in Resources */,
 				2C48560E1B1D01BA00F6F094 /* iPod Touch 5 (White).png in Resources */,
 				2C4855E31B1CF8E900F6F094 /* Galaxy S3.png in Resources */,
 				5749940C1A00AE8600F79F9F /* Images.xcassets in Resources */,
@@ -457,7 +457,7 @@
 				2C4855F01B1CF8E900F6F094 /* iPhone 6 (Gold).png in Resources */,
 				2C4855F51B1CF8E900F6F094 /* One M8.png in Resources */,
 				2C4855E91B1CF8E900F6F094 /* hudl.png in Resources */,
-				2C48560C1B1D01BA00F6F094 /* iPhone 6 (Space Grey).png in Resources */,
+				2C48560C1B1D01BA00F6F094 /* iPhone 6 (Grey).png in Resources */,
 				2C4855E51B1CF8E900F6F094 /* Galaxy S4.png in Resources */,
 				2C4855E61B1CF8E900F6F094 /* Galaxy Tab 2.png in Resources */,
 				2C4855E01B1CF8E900F6F094 /* Galaxy Note 2.png in Resources */,
