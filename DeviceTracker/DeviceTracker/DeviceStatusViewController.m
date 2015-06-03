@@ -67,20 +67,24 @@
     nameLabel.text = [object objectForKey:@"user"];
     nameLabel.font = [UIFont boldSystemFontOfSize:15.0];
     
+    
+    UILabel *deviceAvailable = (UILabel*) [cell viewWithTag:105];
+    UILabel *deviceLastUpdateLabel = (UILabel*) [cell viewWithTag:104];
     if (![nameLabel.text isEqual: @""]){
-        UILabel *deviceLastUpdateLabel = (UILabel*) [cell viewWithTag:104];
         NSDateFormatter *formatter;
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"MMM-dd-yyyy HH:mm"];
         NSDate *lastUpdated = object.updatedAt;
         deviceLastUpdateLabel.text = [formatter stringFromDate:lastUpdated];
         deviceLastUpdateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+        deviceAvailable.text = @"";
     }
     else
     {
-        UILabel *deviceLastUpdateLabel = (UILabel*) [cell viewWithTag:104];
-        deviceLastUpdateLabel.text = @"Available";
-        deviceLastUpdateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+        deviceLastUpdateLabel.text = @"";
+        deviceAvailable.text = @"Available";
+        deviceAvailable.textColor =[UIColor colorWithRed:23/255.0f green:150/255.0f blue:1/255.0f alpha:1.0f];
+        deviceAvailable.font = [UIFont boldSystemFontOfSize:18.0];
     }
     //Different background for odd and even rows
     if (indexPath.row % 2) {

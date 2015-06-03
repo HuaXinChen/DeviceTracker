@@ -80,8 +80,11 @@
     _deviceObjectID = nil;
     
     if (_lblStatus.text.length < 1)
+    {
         _lblStatus.text = @"Scan DEVICE or USER QR";
-        
+        _lblStatus.font = [UIFont boldSystemFontOfSize:20.0];
+    }
+    
     [self startReading];
 }
 
@@ -276,13 +279,11 @@
         _userName = user[@"userName"];
         NSNumber *numberOfDeviceBorrowed = user[@"numberOfDeviceBorrowed"];
         NSNumber *maxNumberDeviceAllowed = user[@"maxNumberDeviceAllowed"];
-        NSString *role = user[@"role"];
         
         //if the user has already borrowed 2 or more devices
         if ( [numberOfDeviceBorrowed intValue] >= [maxNumberDeviceAllowed intValue]) {
             UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userName]
-                                                                       message:[NSString stringWithFormat:@"%@%@%@%@",
-                                                                                role, @" cannot check out more than ", maxNumberDeviceAllowed, @" devices!"]
+                                                                       message:[NSString stringWithFormat:@"%@%@", maxNumberDeviceAllowed, @" devices limit reached!"]
                                                                       delegate:self
                                                              cancelButtonTitle:@"OK"
                                                              otherButtonTitles: nil];
@@ -393,7 +394,7 @@
                 [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"%@",device);
-                        self.lblStatus.text = @"Checkin completed!";
+                        self.lblStatus.text = @"Check-in Complete!";
                     } else {
                         NSLog(@"%@",error);
                         self.lblStatus.text = @"Device cannot be returned at this moment, please try again";
@@ -429,7 +430,7 @@
                 [device saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                        NSLog(@"%@",device);
-                       self.lblStatus.text = @"Checkout completed!";
+                       self.lblStatus.text = @"Check-out Complete!";
                     } else {
                        NSLog(@"%@",error);
                        self.lblStatus.text = @"Device cannot be borrowed at this moment, please try again";
