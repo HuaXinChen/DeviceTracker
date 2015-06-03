@@ -438,6 +438,7 @@
                 transaction[@"deviceId"] = device[@"deviceId"];
                 transaction[@"model"] = device[@"model"];
                 transaction[@"user"] = _userName;
+                transaction[@"userObjectId"] = _deviceObjectID;
                 transaction[@"action"] = @"borrow";
                 [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
 
