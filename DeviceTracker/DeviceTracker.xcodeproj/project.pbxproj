@@ -44,7 +44,6 @@
 		2C8486171B1D28460078FCC1 /* iPad 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8486161B1D28460078FCC1 /* iPad 1.png */; };
 		436A81F31A0A018B009A04B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436A81F11A0A018B009A04B6 /* Main.storyboard */; };
 		43A41BE01A09DEE7008B5459 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */; };
-		5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5703AD231A1FBE4A000CACC8 /* StatusViewController.m */; };
 		574993FE1A00AE8600F79F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 574993FD1A00AE8600F79F9F /* main.m */; };
 		574994011A00AE8600F79F9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994001A00AE8600F79F9F /* AppDelegate.m */; };
 		574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 574994021A00AE8600F79F9F /* DeviceTracker.xcdatamodeld */; };
@@ -56,7 +55,6 @@
 		5776A9651A303FD700CDC707 /* top_charts@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9631A303FD700CDC707 /* top_charts@3x.png */; };
 		5776A9671A30FC8700CDC707 /* logo_PNI.png in Resources */ = {isa = PBXBuildFile; fileRef = 5776A9661A30FC8700CDC707 /* logo_PNI.png */; };
 		577807701A072C6E00D5FA02 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5778076F1A072C6E00D5FA02 /* beep.mp3 */; };
-		57E5EB361A2E5D4E002F31E2 /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E5EB351A2E5D4E002F31E2 /* StatusCell.m */; };
 		57E5EB3A1A2EC155002F31E2 /* available.png in Resources */ = {isa = PBXBuildFile; fileRef = 57E5EB381A2EC155002F31E2 /* available.png */; };
 		57E5EB3B1A2EC155002F31E2 /* unavailable.png in Resources */ = {isa = PBXBuildFile; fileRef = 57E5EB391A2EC155002F31E2 /* unavailable.png */; };
 		6EC8F4431B13C97E00C7CAF6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC8F4421B13C97E00C7CAF6 /* Parse.framework */; };
@@ -125,8 +123,6 @@
 		2C8486161B1D28460078FCC1 /* iPad 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad 1.png"; sourceTree = "<group>"; };
 		436A81F21A0A018B009A04B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43A41BDF1A09DEE7008B5459 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		5703AD221A1FBE4A000CACC8 /* StatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusViewController.h; sourceTree = "<group>"; };
-		5703AD231A1FBE4A000CACC8 /* StatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusViewController.m; sourceTree = "<group>"; };
 		574993F81A00AE8600F79F9F /* DeviceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574993FC1A00AE8600F79F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		574993FD1A00AE8600F79F9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -144,8 +140,6 @@
 		5776A9631A303FD700CDC707 /* top_charts@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_charts@3x.png"; sourceTree = "<group>"; };
 		5776A9661A30FC8700CDC707 /* logo_PNI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_PNI.png; sourceTree = "<group>"; };
 		5778076F1A072C6E00D5FA02 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
-		57E5EB351A2E5D4E002F31E2 /* StatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusCell.m; path = ../StatusCell.m; sourceTree = "<group>"; };
-		57E5EB371A2E5D68002F31E2 /* StatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatusCell.h; path = ../StatusCell.h; sourceTree = "<group>"; };
 		57E5EB381A2EC155002F31E2 /* available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = available.png; sourceTree = "<group>"; };
 		57E5EB391A2EC155002F31E2 /* unavailable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unavailable.png; sourceTree = "<group>"; };
 		6EC8F4421B13C97E00C7CAF6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -281,10 +275,6 @@
 				5776A9631A303FD700CDC707 /* top_charts@3x.png */,
 				574993FF1A00AE8600F79F9F /* AppDelegate.h */,
 				574994001A00AE8600F79F9F /* AppDelegate.m */,
-				5703AD221A1FBE4A000CACC8 /* StatusViewController.h */,
-				5703AD231A1FBE4A000CACC8 /* StatusViewController.m */,
-				57E5EB371A2E5D68002F31E2 /* StatusCell.h */,
-				57E5EB351A2E5D4E002F31E2 /* StatusCell.m */,
 				6EC8F45D1B13DA1D00C7CAF6 /* DeviceStatusViewController.h */,
 				6EC8F45B1B13D9FC00C7CAF6 /* DeviceStatusViewController.m */,
 				574994051A00AE8600F79F9F /* ViewController.h */,
@@ -495,8 +485,6 @@
 				6EC8F45C1B13D9FC00C7CAF6 /* DeviceStatusViewController.m in Sources */,
 				574994041A00AE8600F79F9F /* DeviceTracker.xcdatamodeld in Sources */,
 				574994071A00AE8600F79F9F /* ViewController.m in Sources */,
-				57E5EB361A2E5D4E002F31E2 /* StatusCell.m in Sources */,
-				5703AD241A1FBE4A000CACC8 /* StatusViewController.m in Sources */,
 				574993FE1A00AE8600F79F9F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
