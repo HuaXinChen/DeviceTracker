@@ -275,11 +275,14 @@
         //extract user name, and set it to global variable
         _userName = user[@"userName"];
         NSNumber *numberOfDeviceBorrowed = user[@"numberOfDeviceBorrowed"];
+        NSNumber *maxNumberDeviceAllowed = user[@"maxNumberDeviceAllowed"];
+        NSString *role = user[@"role"];
         
         //if the user has already borrowed 2 or more devices
-        if ( [numberOfDeviceBorrowed intValue] >= 2) {
+        if ( [numberOfDeviceBorrowed intValue] >= [maxNumberDeviceAllowed intValue]) {
             UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userName]
-                                                                       message:@"Cannot check out more than 2 devices!"
+                                                                       message:[NSString stringWithFormat:@"%@%@%@%@",
+                                                                                role, @" cannot check out more than ", maxNumberDeviceAllowed, @" devices!"]
                                                                       delegate:self
                                                              cancelButtonTitle:@"OK"
                                                              otherButtonTitles: nil];
