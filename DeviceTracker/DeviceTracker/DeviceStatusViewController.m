@@ -67,6 +67,14 @@
     nameLable.text = [object objectForKey:@"user"];
     nameLable.font = [UIFont boldSystemFontOfSize:15.0];
     
+    UILabel *deviceLastUpdate = (UILabel*) [cell viewWithTag:104];
+    NSDateFormatter *formatter;
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM-dd-yyyy HH:mm"];
+    NSDate *lastUpdated = object.updatedAt;
+    deviceLastUpdate.text = [formatter stringFromDate:lastUpdated];
+    deviceLastUpdate.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    
     //Different background for odd and even rows
     if (indexPath.row % 2) {
         cell.backgroundColor = [UIColor whiteColor];
