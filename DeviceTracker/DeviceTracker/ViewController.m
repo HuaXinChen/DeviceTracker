@@ -24,6 +24,7 @@
 #define scanDeviceAlertView 4
 #define deviceNotFoundAlertView 5
 #define reachMaxNumberOfDeviceBorrowedAlertView 6
+#define deviceNotConnectedAlertView 7
 
 -(BOOL)startReading;
 -(void)stopReading;
@@ -181,6 +182,7 @@
         _deviceID = device[@"deviceId"];
         NSString *deviceUser = device[@"user"];
         NSString *deviceModel = device[@"model"];
+        NSNumber *connected = device[@"connected"];
         
         //device is not in DB, display error message
         if(_deviceID == NULL){
@@ -235,7 +237,7 @@
                 }
             }
             //device is not availabe, trigger checkin
-            else{
+            else if([connected boolValue]){
                 UIAlertView * returnAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@", _deviceID]
                                                                        message:[NSString stringWithFormat:@"Return %@?",deviceModel]
                                                                       delegate:self
@@ -257,7 +259,15 @@
                 [returnAlert addButtonWithTitle:@"Return"];
                 [returnAlert setTag:returnAlertView];
                 [returnAlert show];
-                
+            }
+            else{
+                UIAlertView * scanUserAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"Device: %@ ",_deviceID]
+                                                                         message:@"Please connect the device before check-in"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles: nil];
+                [scanUserAlert setTag:scanUserAlertView];
+                [scanUserAlert show];
             }
         }
     }];
@@ -377,6 +387,11 @@
             self.lblStatus.text = @"";
             [self reset];
         }
+        else if(alertView.tag == deviceNotConnectedAlertView){
+            NSLog(@"The device is not connected");
+            self.lblStatus.text = @"Connect the device";
+            [self reset];
+        }
     }
     else if(buttonIndex == 1)
     {
@@ -414,7 +429,6 @@
                 PFObject *user = [PFObject objectWithoutDataWithClassName:@"Users" objectId:deviceUserObjectId];
                 [user incrementKey:@"numberOfDeviceBorrowed" byAmount:[NSNumber numberWithInt:-1]];
                 [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
-
                 
                 [self reset];
             }];

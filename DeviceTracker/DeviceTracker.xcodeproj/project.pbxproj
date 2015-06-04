@@ -241,6 +241,7 @@
 		2CA891341B1FCDC100108090 /* AppAssets */ = {
 			isa = PBXGroup;
 			children = (
+				8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */,
 				5776A9661A30FC8700CDC707 /* logo_PNI.png */,
 				5776A9621A303FD700CDC707 /* icon_search.png */,
 				5776A9631A303FD700CDC707 /* icon_status.png */,
@@ -273,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				2C4856111B1D11A900F6F094 /* Device Thumbnails */,
-				8E84681B1A311AF800D8BB0A /* PNI_Launch_Logo.jpg */,
 				2C4856131B1D11F400F6F094 /* Device Thumbnails */,
 				2CA891341B1FCDC100108090 /* AppAssets */,
 				574993FF1A00AE8600F79F9F /* AppDelegate.h */,
