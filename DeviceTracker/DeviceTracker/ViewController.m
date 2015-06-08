@@ -287,12 +287,13 @@
         NSLog(@"%@", user);
         //extract user name, and set it to global variable
         _userName = user[@"userName"];
+        NSString *title = user[@"role"];
         NSNumber *numberOfDeviceBorrowed = user[@"numberOfDeviceBorrowed"];
         NSNumber *maxNumberDeviceAllowed = user[@"maxNumberDeviceAllowed"];
         
         //if the user has already borrowed 2 or more devices
         if ( [numberOfDeviceBorrowed intValue] >= [maxNumberDeviceAllowed intValue]) {
-            UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"User: %@ ",_userName]
+            UIAlertView * scanDeviceAlert =[[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:@"%@%@%@", title, @": ",_userName]
                                                                        message:[NSString stringWithFormat:@"%@%@", maxNumberDeviceAllowed, @" devices limit reached!"]
                                                                       delegate:self
                                                              cancelButtonTitle:@"OK"
