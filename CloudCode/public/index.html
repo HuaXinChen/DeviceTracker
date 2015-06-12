@@ -1,0 +1,67 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8" http-equiv="refresh" content="300" >
+
+  <title>Device Status | PNI Device Tracker</title>
+  <meta name="description" content="PNI Device Tracker">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script type="text/javascript" src="http://tablesorter.com/__jquery.tablesorter.min.js"></script>
+</head>
+
+  <script type="text/javascript">
+      
+    function DisplayParseObject()
+      {
+        Parse.initialize("EIpND6CzdgXRq1MvORSD53SZLjjeVyLMUWQXWAAO", "JhYzL8coaYHorczG5usbLuQzINggYa3GEmCdlhFR");
+      
+                //var query = new Parse.Query(Devices);
+                var Devices = Parse.Object.extend("Devices");
+                var query = new Parse.Query(Devices);
+                query.limit(1000);
+                query.find({
+                    success: function(results) {
+                        var displayData = '';
+                        for (var i = 0; i < results.length; i++) { 
+                            var object = results[i];
+                          displayData += '<tr><td class="lalign">'+object.get('deviceId')+'</td><td>'+object.get('model')+'</td><td>'+object.get('os')+'</td><td>'+object.updatedAt.toLocaleString()+'</td><td>'+object.get('user')+'</td></tr>';
+                        }
+                        
+                        document.getElementById('tbody').innerHTML = displayData;
+                        
+                        $(function(){
+                            $('#keywords').tablesorter({
+                                sortList: [[1,0]]
+                            });
+                        });
+                    },
+
+                    error: function(error) {
+                        // error is an instance of Parse.Error.
+                    }
+                });
+      }
+  </script>
+    
+<body onload="DisplayParseObject()">
+  <div id="wrapper">
+    <h1>QA Mobile Device Status</h1>
+
+    <table id="keywords" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th><span>Device ID</span></th>
+          <th><span>Model</span></th>
+          <th><span>OS</span></th>
+          <th><span>Last Updated</span></th>
+          <th><span>User</span></th>
+        </tr>
+      </thead>
+      <tbody id="tbody">  </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.2"
+  },
+  "applications": {
+    "DeviceTracker": {
+      "applicationId": "EIpND6CzdgXRq1MvORSD53SZLjjeVyLMUWQXWAAO",
+      "masterKey": "T75XtZ2UFczP7W5tQCcIEtvT61oHGiWougzDNeFo"
+    },
+    "_default": {
+      "link": "DeviceTracker"
+    }
+  }
+}
