@@ -417,6 +417,9 @@
                     }
                 }];
                 
+                //Set the access rights for each transaction object
+                PFACL *acl = [PFACL ACL];
+                [acl setPublicReadAccess:true];
                 //log the transaction
                 PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
                 transaction[@"deviceId"] = device[@"deviceId"];
@@ -424,6 +427,7 @@
                 transaction[@"user"] = deviceUser;
                 transaction[@"userObjectId"] = deviceUserObjectId;
                 transaction[@"action"] = @"return";
+                transaction.ACL = acl;
                 [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
                 
                 //decrement borrowed counter for that user
@@ -452,6 +456,9 @@
                     }
                 }];
                 
+                //Set the access rights for each transaction object
+                PFACL *acl = [PFACL ACL];
+                [acl setPublicReadAccess:true];
                 //log the transaction
                 PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
                 transaction[@"deviceId"] = device[@"deviceId"];
@@ -459,6 +466,7 @@
                 transaction[@"user"] = _userName;
                 transaction[@"userObjectId"] = _deviceObjectID;
                 transaction[@"action"] = @"borrow";
+                transaction.ACL = acl;
                 [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {}];
 
                 //increment borrowed counter for that user

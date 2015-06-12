@@ -27,6 +27,17 @@
     [Parse setApplicationId:@"EIpND6CzdgXRq1MvORSD53SZLjjeVyLMUWQXWAAO"
                   clientKey:@"qDmppXuW3bMUrYT2kTkudz48qJMKhK89B7ycMTbz"];
     
+    
+    [PFUser logInWithUsernameInBackground:@"iDeviceTracker" password:@"iosapp"
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            NSLog(@"iDeviceTracker logged in successfully");
+                                        } else {
+                                            NSLog(@"%@",[error localizedDescription]);
+                                        }
+                                    }];
+    
+    
     // Override point for customization after application launch.
     
     // Assign tab bar item with titles
