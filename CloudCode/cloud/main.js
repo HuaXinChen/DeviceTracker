@@ -24,7 +24,7 @@ function sendEmailwith(deviceID, model, user) {
             if(validateEmail(email)){
                 Mailgun.sendEmail({
                     to: email,
-                    bcc: "pnidevicetracker@gmail.com",
+                    bcc: "pnidevicetracker@gmail.com, aaclon@pnimedia.com, vchen@pnimedia.com",
                     from: "QA@pnimedia.com",
                     subject: model + " is OVERDUE",
                     text: user + ", " + model + " (" + deviceID + ") is now overdue.\n\nPlease return your device as soon as possible, or contact the QA team for an extension.\n\nThanks,\n\nPNI QA Team"
@@ -46,38 +46,48 @@ function sendEmailwith(deviceID, model, user) {
 
 
 function notifyLateReturnUsers(status) {
-
-    var today = new Date();
-    var twoDaysAgo = new Date(today);
-    twoDaysAgo.setDate(today.getDate());
     
-    //Find Device that has not been return by certain time, return the user's name
-    var Devices = Parse.Object.extend("Devices");
-    var query = new Parse.Query(Devices);
-    query.lessThan ("updatedAt",twoDaysAgo);
-    query.notEqualTo("user","");
-    query.find({
-        success: function(results) {
-            if(results.length < 0){
-                status.success("No late Users, job completed successfully.");
-                return;
-            }
-            
-            for (var i = 0; i < results.length; i++) { 
-                var deviceID = results[i].get("deviceId");
-                var model = results[i].get("model");
-                var user = results[i].get("user");
+    Parse.User.logIn("iDeviceTracker", "iosapp", {
+      success: function(user) {
+        console.log("Login successful.");
+          
+        var today = new Date();
+        var oneDaysAgo = new Date(today);
+        oneDaysAgo.setDate(today.getDate()-1);
 
-                console.log("User: " + user + ", deviceId: " + deviceID + ", model: " + model);
+        //Find Device that has not been return by certain time, return the user's name
+        var Devices = Parse.Object.extend("Devices");
+        var query = new Parse.Query(Devices);
+        query.lessThan ("updatedAt",oneDaysAgo);
+        query.notEqualTo("user","");
+        query.find({
+            success: function(results) {
+                if(results.length < 0){
+                    status.success("No late Users, job completed successfully.");
+                    return;
+                }
 
-                sendEmailwith(deviceID, model, user);
+                for (var i = 0; i < results.length; i++) { 
+                    var deviceID = results[i].get("deviceId");
+                    var model = results[i].get("model");
+                    var user = results[i].get("user");
+
+                    console.log("User: " + user + ", deviceId: " + deviceID + ", model: " + model);
+
+                    sendEmailwith(deviceID, model, user);
+                }
+            },
+            error: function(error) {
+                console.error(error);
+                status.error("Uh oh, device query went wrong.");
             }
-        },
-        error: function(error) {
-            console.error(error);
-            status.error("Uh oh, device query went wrong.");
-        }
-    });
+        });
+          },
+          error: function(user, error) {
+            console.log("Login failed.");
+          }
+        });
+    
     
     
     
