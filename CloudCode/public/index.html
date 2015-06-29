@@ -1,10 +1,12 @@
 <!doctype html>
 <head>
-  <meta charset="utf-8" http-equiv="refresh" content="300" >
+  <meta charset="utf-8" http-equiv="refresh" content="900" >
 
-  <title>Device Status | PNI Device Tracker</title>
-  <meta name="description" content="PNI Device Tracker">
+  <title>PNI Device Tracker | Device Status</title>
+  <meta name="description" content="PNI Device Tracker is a in-house tool that monitor internal QA mobile deivces. This page shows the current ownership of each mobile devices">
+  <meta name="keywords" content="PNI, Device Tracker, Cloud, Device, Tracker, QR, Enterprise tool, iOS, Status, Mobile">
   <meta name="viewport" content="width=device-width">
+  <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
@@ -33,7 +35,7 @@
                         
                         $(function(){
                             $('#keywords').tablesorter({
-                                sortList: [[1,0]]
+                                sortList: [[4,1]]
                             });
                         });
                     },
@@ -48,6 +50,7 @@
 <body onload="DisplayParseObject()">
   <div id="wrapper">
     <h1>QA Mobile Device Status</h1>
+    <h2>Powered by PNI</h2>  
 
     <table id="keywords" cellspacing="0" cellpadding="0">
       <thead>

@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: 
+
+Sitemap: http://devicetracker.parseapp.com/sitemap.xml
